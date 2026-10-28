@@ -1,0 +1,2717 @@
+[
+ {
+  "id": "tmvr735si",
+  "kind": "note",
+  "start": 175,
+  "end": 227,
+  "messages": [
+   {
+    "role": "note",
+    "content": "counterexample: anecdote about a 60 minute requirements gathering meeting"
+   }
+  ],
+  "created": "2026-10-27T21:25:54.066Z"
+ },
+ {
+  "id": "tmvr73l2z",
+  "kind": "highlight",
+  "start": 1143,
+  "end": 1247,
+  "created": "2026-10-27T21:26:13.883Z"
+ },
+ {
+  "id": "tmvr73p3c",
+  "kind": "pop",
+  "start": 967,
+  "end": 1648,
+  "created": "2026-10-27T21:26:19.080Z"
+ },
+ {
+  "id": "tmvr73vhm",
+  "kind": "underline",
+  "start": 1363,
+  "end": 1381,
+  "created": "2026-10-27T21:26:27.370Z"
+ },
+ {
+  "id": "tmvr742ac",
+  "kind": "note",
+  "start": 1363,
+  "end": 1381,
+  "messages": [
+   {
+    "role": "note",
+    "content": "AI"
+   }
+  ],
+  "created": "2026-10-27T21:26:36.180Z"
+ },
+ {
+  "id": "tmvr74c2g",
+  "kind": "underline",
+  "start": 1560,
+  "end": 1571,
+  "created": "2026-10-27T21:26:48.856Z"
+ },
+ {
+  "id": "tmvr74n58",
+  "kind": "underline",
+  "start": 1480,
+  "end": 1486,
+  "created": "2026-10-27T21:27:03.212Z"
+ },
+ {
+  "id": "tmvr74ydu",
+  "kind": "underline",
+  "start": 1585,
+  "end": 1605,
+  "created": "2026-10-27T21:27:17.778Z"
+ },
+ {
+  "id": "tmvr75lk5",
+  "kind": "note",
+  "start": 1631,
+  "end": 1647,
+  "messages": [
+   {
+    "role": "note",
+    "content": "is AI being designed to communicate with us?"
+   },
+   {
+    "role": "note",
+    "content": "thinking of many agents working on a problem"
+   }
+  ],
+  "created": "2026-10-27T21:27:47.813Z"
+ },
+ {
+  "id": "tmvr774c0",
+  "kind": "highlight",
+  "start": 2058,
+  "end": 2114,
+  "created": "2026-10-27T21:28:58.800Z"
+ },
+ {
+  "id": "tmvr7abe7",
+  "kind": "underline",
+  "start": 2366,
+  "end": 2404,
+  "created": "2026-10-27T21:31:27.919Z"
+ },
+ {
+  "id": "tmvr7ag7j",
+  "kind": "underline",
+  "start": 2431,
+  "end": 2446,
+  "created": "2026-10-27T21:31:34.159Z"
+ },
+ {
+  "id": "tmvr7arpx",
+  "kind": "note",
+  "start": 2431,
+  "end": 2446,
+  "messages": [
+   {
+    "role": "note",
+    "content": "what does creativity mean when we communicate with AI?"
+   }
+  ],
+  "created": "2026-10-27T21:31:49.077Z"
+ },
+ {
+  "id": "tmvr7b064",
+  "kind": "pop",
+  "start": 2464,
+  "end": 2709,
+  "created": "2026-10-27T21:32:00.028Z"
+ },
+ {
+  "id": "tmvr7b4mk",
+  "kind": "highlight",
+  "start": 2511,
+  "end": 2557,
+  "created": "2026-10-27T21:32:05.804Z"
+ },
+ {
+  "id": "tmvr7b8yn",
+  "kind": "underline",
+  "start": 2585,
+  "end": 2621,
+  "created": "2026-10-27T21:32:11.423Z"
+ },
+ {
+  "id": "tmvr7bef7",
+  "kind": "highlight",
+  "start": 2665,
+  "end": 2708,
+  "created": "2026-10-27T21:32:18.499Z"
+ },
+ {
+  "id": "tmvr7c1tg",
+  "kind": "ask",
+  "start": 2585,
+  "end": 2621,
+  "messages": [
+   {
+    "role": "user",
+    "content": "this is a unique phrase that i haven't heard before. eli5 (without childish analogies)."
+   },
+   {
+    "role": "assistant",
+    "content": "Premise means a starting assumption or input. Consequence means what follows from it. On paper, you write the premises down, but working out the consequences is your job, by hand, every time something changes. In a \"dynamic medium,\" the computer does that part: change one input and every result that depends on it updates by itself.\n\nSpreadsheet is the clean modern case. You change the interest rate, and the whole loan table recalculates. VisiCalc came in 1979, eleven years after this essay, so Licklider was describing it before it existed. Simulations work the same way. Because consequences are cheap, a group can try \"what if\" ideas fast, which is his point about modeling together."
+   }
+  ],
+  "created": "2026-10-27T21:32:48.820Z"
+ },
+ {
+  "id": "tmvr7d081",
+  "kind": "underline",
+  "start": 2795,
+  "end": 2828,
+  "created": "2026-10-27T21:33:33.409Z"
+ },
+ {
+  "id": "tmvr7dam9",
+  "kind": "note",
+  "start": 2795,
+  "end": 2828,
+  "messages": [
+   {
+    "role": "note",
+    "content": "how does this apply to AI?"
+   }
+  ],
+  "created": "2026-10-27T21:33:46.881Z"
+ },
+ {
+  "id": "tmvr7dqkp",
+  "kind": "note",
+  "start": 2925,
+  "end": 2940,
+  "messages": [
+   {
+    "role": "note",
+    "content": "well trained, well prompted, well harnessed..."
+   }
+  ],
+  "created": "2026-10-27T21:34:07.561Z"
+ },
+ {
+  "id": "tmvr7e6ch",
+  "kind": "note",
+  "start": 2969,
+  "end": 2975,
+  "messages": [
+   {
+    "role": "note",
+    "content": "grep, web search"
+   }
+  ],
+  "created": "2026-10-27T21:34:28.001Z"
+ },
+ {
+  "id": "tmvr7eca7",
+  "kind": "note",
+  "start": 3019,
+  "end": 3028,
+  "messages": [
+   {
+    "role": "note",
+    "content": "tool calls"
+   }
+  ],
+  "created": "2026-10-27T21:34:35.695Z"
+ },
+ {
+  "id": "tmvr7ehhp",
+  "kind": "pop",
+  "start": 2709,
+  "end": 3061,
+  "created": "2026-10-27T21:34:42.445Z"
+ },
+ {
+  "id": "tmvr8xt70",
+  "kind": "note",
+  "start": 2738,
+  "end": 2765,
+  "messages": [
+   {
+    "role": "note",
+    "content": "is it correct to think of AI (or what AI produces) as a dynamically programmed customizable digital computer?"
+   }
+  ],
+  "created": "2026-10-27T22:17:43.692Z"
+ },
+ {
+  "id": "tmvr8y8rv",
+  "kind": "pop",
+  "start": 3327,
+  "end": 3749,
+  "created": "2026-10-27T22:18:03.883Z"
+ },
+ {
+  "id": "tmvr8yis1",
+  "kind": "highlight",
+  "start": 3421,
+  "end": 3441,
+  "created": "2026-10-27T22:18:16.849Z"
+ },
+ {
+  "id": "tmvr8yvof",
+  "kind": "note",
+  "start": 3421,
+  "end": 3441,
+  "messages": [
+   {
+    "role": "note",
+    "content": "translating between information spaces"
+   }
+  ],
+  "created": "2026-10-27T22:18:33.567Z"
+ },
+ {
+  "id": "tmvr902m2",
+  "kind": "note",
+  "start": 4392,
+  "end": 4401,
+  "messages": [
+   {
+    "role": "note",
+    "content": "how do we do decision-making at scale?"
+   }
+  ],
+  "created": "2026-10-27T22:19:29.210Z"
+ },
+ {
+  "id": "tmvr9dir8",
+  "kind": "note",
+  "start": 4596,
+  "end": 4616,
+  "messages": [
+   {
+    "role": "note",
+    "content": "where is the line between communication, decision-making, and authority and what does the position of that line depend on?"
+   },
+   {
+    "role": "note",
+    "content": "does it count as \"communication\" fully if one side doesn't change and the other side doesn't have the power to make decisions? (see later on information housekeeping)"
+   }
+  ],
+  "created": "2026-10-27T22:29:56.660Z"
+ },
+ {
+  "id": "tmvr9ewtc",
+  "kind": "pop",
+  "start": 4283,
+  "end": 4684,
+  "created": "2026-10-27T22:31:01.536Z"
+ },
+ {
+  "id": "tmvr9ft00",
+  "kind": "note",
+  "start": 4313,
+  "end": 4343,
+  "messages": [
+   {
+    "role": "note",
+    "content": "if time permits: add note on The Dawn of Everything re: freedom, coercion and flexible social organization"
+   }
+  ],
+  "created": "2026-10-27T22:31:43.248Z"
+ },
+ {
+  "id": "tmvr9gnny",
+  "kind": "highlight",
+  "start": 4838,
+  "end": 4920,
+  "created": "2026-10-27T22:32:22.990Z"
+ },
+ {
+  "id": "tmvr9hotv",
+  "kind": "underline",
+  "start": 4965,
+  "end": 4977,
+  "created": "2026-10-27T22:33:11.155Z"
+ },
+ {
+  "id": "tmvr9hr5u",
+  "kind": "underline",
+  "start": 4984,
+  "end": 4991,
+  "created": "2026-10-27T22:33:14.178Z"
+ },
+ {
+  "id": "tmvr9je8z",
+  "kind": "note",
+  "start": 5226,
+  "end": 5255,
+  "messages": [
+   {
+    "role": "note",
+    "content": "what manipulable models do we currently have?\n\nshared word processing (OneDrive, Google Docs)\nwhiteboard apps (excalidraw, lucid)\nERD (dbdiagram)"
+   },
+   {
+    "role": "note",
+    "content": "what am i missing from this list? in terms of commonly used ones across multiple industries."
+   },
+   {
+    "role": "user",
+    "content": "Claude what do you think"
+   },
+   {
+    "role": "assistant",
+    "content": "Biggest gap is **spreadsheets** (Excel, Google Sheets). Probably the most common manipulable model across all industries. Also closest to the essay's ideal: change one cell and \"premises flow into consequences.\" Your list is mostly static pictures; spreadsheet is live model.\n\nOthers missing:\n- Design canvases: Figma, Miro\n- CAD/BIM: Onshape, Revit, shared 3D models in engineering and construction\n- Code plus review: Git, GitHub pull requests, where people point and comment on lines\n- Task boards: Jira, Trello, Notion, Asana; the project's status as shared model\n- Live notebooks: Jupyter, Observable, Hex; data plus running computation\n- Dashboards: Tableau, Looker, filterable by anyone in the meeting\n- Shared maps: GIS, Google My Maps\n- Slides: Google Slides, PowerPoint co-editing. Weak model, but everywhere.\n\nGuess: Licklider would rank spreadsheets and notebooks highest. They let people test \"what if\" together, not just look at the same picture."
+   },
+   {
+    "role": "user",
+    "content": "which of these are the most over-simplified models? which are the least manipulable in realtime in an intelligent way? respond concisely"
+   },
+   {
+    "role": "assistant",
+    "content": "**Most over-simplified:**\n- **Slides.** The model gets squeezed into bullets for display, so you can watch it but not work it.\n- **Task boards.** Whole project state becomes a card in a column. \"In progress\" hides almost everything.\n- **Dashboards.** Aggregates hide raw data. You see the summary, not the reasoning under it.\n- **Whiteboards.** Boxes and arrows with no meaning attached. Easy to draw and easy to agree on, because the vagueness hides disagreement.\n\n**Least manipulable in realtime, intelligently:**\n- **Docs and whiteboards.** Everyone can edit live, but nothing computes. Change one line and nothing else updates. Plastic but not dynamic, in the essay's terms.\n- **Dashboards.** Live data, but most viewers can only filter. They cannot change the model's premises.\n- **Pull requests.** Smart and precise, but async. You point at a line, then wait hours.\n- **CAD/BIM.** Very rich models, but heavy. Often one editor at a time, with file locks.\n\nGuess: the sweet spot is narrow. Spreadsheets and notebooks are both live and computing. Everything else gives up one of the two."
+   }
+  ],
+  "created": "2026-10-27T22:34:30.755Z"
+ },
+ {
+  "id": "tmvr9pge5",
+  "kind": "pop",
+  "start": 2366,
+  "end": 2404,
+  "created": "2026-10-27T22:39:13.469Z"
+ },
+ {
+  "id": "tmvr9q5l9",
+  "kind": "note",
+  "start": 2397,
+  "end": 2403,
+  "messages": [
+   {
+    "role": "note",
+    "content": "emergence is a banger concept bc it results in behavior that isn't just aggregation or compounding"
+   }
+  ],
+  "created": "2026-10-27T22:39:46.125Z"
+ },
+ {
+  "id": "tmvr9um91",
+  "kind": "note",
+  "start": 5531,
+  "end": 5583,
+  "messages": [
+   {
+    "role": "note",
+    "content": "have we really realized this? even with AI, are we on the road to realizing this? this goes back to an earlier note on whether AI is being designed for communication purposes and if so, primarily for human-to-human, human-to-AI, or AI-to-AI? I think AI-to-AI."
+   },
+   {
+    "role": "user",
+    "content": "Claude, concisely respond with your thoughts."
+   },
+   {
+    "role": "assistant",
+    "content": "Half realized. Shared docs, Figma, whiteboards, screen share: all external models, all moldable together. That part came true. But mainstream video calls bet on the face, the very thing Licklider doubted mattered most.\n\nAI mostly misses his point so far. Chat is linear text, and the AI's \"model\" of the problem stays hidden inside it. That is close to \"speeches at each other,\" not pointing at a shared sketch. Canvas or artifact panes are small steps toward a common moldable model.\n\nOn AI-to-AI, you may be right about where the money and effort go now (agent protocols like MCP and A2A). But even agents mostly swap text messages, not a shared inspectable model. My guess: by Licklider's test, none of the three is there yet. The real question is whether there is one external model that humans and AIs both see and edit."
+   },
+   {
+    "role": "user",
+    "content": "who, as of October 2026, is working on this manipulable externalized models using AI and/or for AI? use web search. top 5 picks. concise one caveman sentence per result."
+   },
+   {
+    "role": "assistant",
+    "content": "By Licklider's test, these five come closest: one model that humans and AI both see and edit.\n\n- **tldraw**: An agent draws its picture of a problem on a whiteboard, and you drag and fix the drawing. Purest form of his \"point, sketch, nod\" idea. ([AI Engineer talk](https://www.ai.engineer/talks/agents-on-canvas-in-tldraw), [Copes deep dive](https://flaviocopes.com/tldraw.md))\n- **Figma**: At Config 2026 it pitched its design canvas as one shared space for people, code and AI agents. ([AIM](https://analyticsindiamag.com/ai-news/figma-unveils-ai-agents-and-code-native-design-tools-at-config-2026))\n- **OpenAI ChatGPT Space**: Launched at DevDay 2026, it reportedly lets teams and agents edit the same Pages live. That moves ChatGPT past plain linear chat. ([Android Headlines](https://www.androidheadlines.com/2026/09/openai-launches-chatgpt-space-collaborative-hub.html))\n- **Cisco AI Canvas / Honeycomb Canvas**: Ops teams and agents work one incident on one surface, from the same evidence. Closest match to his \"project meeting.\" ([Cisco](https://blogs.cisco.com/ai/ai-canvas-controlled-availability), [Honeycomb](https://www.honeycomb.io/blog/honeycomb-canvas-multiplayer-workspace-for-agentic-era))\n- **Ink & Switch**: Research lab building software users can reshape themselves (their 2025 essay, Patchwork). They argue AI coding alone is not enough. Most in Licklider's spirit, but research, not product. ([Ink & Switch](https://inkandswitch.com/malleable-software/))\n\nI left out Bret Victor's Dynamicland. It is the deepest \"shared physical model\" project, but I found no 2026 news on it.\n\nOn your AI-to-AI question: none of these let agents share a model that people can inspect, except that tldraw's experiments have agents coordinating on the same canvas."
+   }
+  ],
+  "created": "2026-10-27T22:43:14.341Z"
+ },
+ {
+  "id": "tmvralf3z",
+  "kind": "highlight",
+  "start": 5761,
+  "end": 5794,
+  "created": "2026-10-27T23:04:04.799Z"
+ },
+ {
+  "id": "tmvralyzt",
+  "kind": "pop",
+  "start": 5825,
+  "end": 6395,
+  "created": "2026-10-27T23:04:30.569Z"
+ },
+ {
+  "id": "tmvram4kt",
+  "kind": "highlight",
+  "start": 5907,
+  "end": 5923,
+  "created": "2026-10-27T23:04:37.805Z"
+ },
+ {
+  "id": "tmvram6x1",
+  "kind": "underline",
+  "start": 5952,
+  "end": 5965,
+  "created": "2026-10-27T23:04:40.837Z"
+ },
+ {
+  "id": "tmvramaet",
+  "kind": "underline",
+  "start": 6024,
+  "end": 6041,
+  "created": "2026-10-27T23:04:45.365Z"
+ },
+ {
+  "id": "tmvramea9",
+  "kind": "highlight",
+  "start": 6119,
+  "end": 6167,
+  "created": "2026-10-27T23:04:50.385Z"
+ },
+ {
+  "id": "tmvrami8q",
+  "kind": "underline",
+  "start": 6255,
+  "end": 6267,
+  "created": "2026-10-27T23:04:55.514Z"
+ },
+ {
+  "id": "tmvrang8k",
+  "kind": "highlight",
+  "start": 6813,
+  "end": 6924,
+  "created": "2026-10-27T23:05:39.572Z"
+ },
+ {
+  "id": "tmvranpft",
+  "kind": "underline",
+  "start": 6465,
+  "end": 6497,
+  "created": "2026-10-27T23:05:51.497Z"
+ },
+ {
+  "id": "tmvranz9v",
+  "kind": "underline",
+  "start": 6695,
+  "end": 6745,
+  "created": "2026-10-27T23:06:04.243Z"
+ },
+ {
+  "id": "tmvraojou",
+  "kind": "note",
+  "start": 6780,
+  "end": 6789,
+  "messages": [
+   {
+    "role": "note",
+    "content": "to state the obvious: this goes back to the challenge of not oversimplifying a model"
+   }
+  ],
+  "created": "2026-10-27T23:06:30.702Z"
+ },
+ {
+  "id": "tmvraqe5u",
+  "kind": "ask",
+  "start": 7279,
+  "end": 7293,
+  "messages": [
+   {
+    "role": "user",
+    "content": "what does \"common pattern\" mean in this situation (similar in structure, different simply in the values of certain parameters). Is it a stretch to think of this as two language models with the same architecture but different weights? And communication is a sort of training to make the weights similar?"
+   },
+   {
+    "role": "assistant",
+    "content": "\"Common pattern\" means a shared model. Both people already frame the problem the same way: same variables, same causal links. They just disagree on the numbers, like how big the budget is, how late the schedule is, how risky the plan is. Talking pulls those numbers together until the two models match closely enough to act on.\n\nYour analogy is not a stretch. Licklider was a psychoacoustician steeped in cybernetics and math modeling, so \"structure vs. parameters\" was his real vocabulary, not a loose metaphor. Same architecture with different weights maps on cleanly. And the next paragraph, where communication needs structural change, maps to changing the architecture, which he calls the harder case. That fits ML too.\n\nTwo caveats:\n- People can't copy weights directly. They swap words, sketches and pointing. So the closer ML picture is distillation, where each model trains a little on the other's outputs, not weight averaging like federated learning.\n- The goal is local agreement, not full sameness. Two people only need to converge on the parameters about this project. Their whole heads stay different. Guess: Licklider would say total convergence kills the \"new ideas emerge\" part he prizes."
+   }
+  ],
+  "created": "2026-10-27T23:07:56.850Z"
+ },
+ {
+  "id": "tmvrasw05",
+  "kind": "ask",
+  "start": 7571,
+  "end": 7679,
+  "messages": [
+   {
+    "role": "user",
+    "content": "does communication require some non-zero level of agreement/change? has to right? otherwise it's just speeches at one another. therefore, two people who try to communicate but don't come away changed at all have not really communicated? concise response."
+   },
+   {
+    "role": "assistant",
+    "content": "Mostly yes, by their definition. Communication = \"cooperative modeling,\" and the essay says you can tell it happened when the models converge. If nothing moves, no communication. Just \"speeches at each other.\"\n\nTwo catches:\n- Change is not agreement. You can come away with a shared model of *why* you disagree. That is still convergence. Same goes for opponents: the crisis passage is about modeling \"what the other side might be up to,\" not agreeing with them.\n- Change can be tiny. With similar models, only \"the values of certain parameters\" shift, and the essay calls that \"the easiest and most frequent kind.\" Also, the definition includes \"maintenance\" of a model, so confirming that you already share one may count too. That part is my reading, a guess.\n\nSo two people who come away totally unchanged have only sent and received signals, like the \"two tape recorders\" earlier in the essay."
+   }
+  ],
+  "created": "2026-10-27T23:09:53.285Z"
+ },
+ {
+  "id": "tmvrauhba",
+  "kind": "underline",
+  "start": 7807,
+  "end": 7817,
+  "created": "2026-10-27T23:11:07.558Z"
+ },
+ {
+  "id": "tmvraul1k",
+  "kind": "underline",
+  "start": 7891,
+  "end": 7903,
+  "created": "2026-10-27T23:11:12.392Z"
+ },
+ {
+  "id": "tmvraw86y",
+  "kind": "ask",
+  "start": 8177,
+  "end": 8197,
+  "messages": [
+   {
+    "role": "user",
+    "content": "as of october 2026, what tools do we have (using AI or not using AI) that facilitate the meeting of many interacting minds causing an interplay that may produce a new set of rules for solving problems? doesn't have to be groundbreaking."
+   },
+   {
+    "role": "assistant",
+    "content": "Many tools now do Engelbart's shared screen. Fewer help a group build new problem-solving rules, which is Licklider's \"creative interaction.\" Rough sort, Oct 2026:\n\n- **Shared editable models (closest to the 1968 meeting):** Google Docs, Notion, Figma/FigJam, Miro, tldraw. Everyone edits one external model live, pointing and objecting. That is \"Engelbart's meeting\" made cheap.\n- **Shared models that compute:** Jupyter/Colab, Observable, spreadsheets, Excel/Sheets with scenarios. This is his \"dynamic medium in which premises will flow into consequences.\" Change one input and the whole group sees the result.\n- **Rules written down so others can change them:** GitHub pull requests, code review, RFC/design docs, Wikipedia talk pages, IETF process. The group's way of working sits in files anyone can propose edits to. That fits \"a new set of rules\" most literally.\n- **Deliberation at large scale:** Polis and vTaiwan (Taiwan used them to find consensus among thousands), Kialo for argument maps, Community Notes for \"bridging\" ratings.\n- **AI inside group work (newest):** Claude, ChatGPT and Gemini shared projects. Meeting copilots (Zoom AI, Teams Copilot, Otter) summarize and track decisions. 2026 brought \"multiplayer AI,\" where teammates and agents share one session: SquidHub rooms, Hedra Multiplayer for visual work, ThoughtSpot AgentSpot for reusing a teammate's agent. YC's Fall 2026 request for startups asks for exactly this, which suggests it's still not solved.\n- **Agents as OLIVER-lite:** assistants that sort email, schedule and draft replies. They do the buffering job but don't hold your \"value structure\" yet.\n\nMy caveat: most of these tools help a group agree. Few help it change how it reasons. Code review and Polis-style deliberation come closest. AI multiplayer might get there, but it's early. That part is my guess, and my own knowledge stops around mid-2026.\n\nSources:\n- [Multiplayer AI manifesto](https://fullstackdeeplearning.com/working-with-ai-agents/multiplayer-ai-manifesto/)\n- [SquidHub on Product Hunt](https://www.producthunt.com/products/squidhub/makers)\n- [Hedra Multiplayer](https://www.hedra.com/blog/what-is-hedra-multiplayer-bringing-real-time-collaboration-to-visual-work)\n- [ThoughtSpot on multiplayer AI](https://www.thoughtspot.com/agentspot/blog/multiplayer-ai/ai-collaboration-problem)\n- [YC RFS Fall 2026: multiplayer AI](https://modelence.com/yc-rfs-fall-2026/multiplayer-ai)"
+   }
+  ],
+  "created": "2026-10-27T23:12:29.050Z"
+ },
+ {
+  "id": "tmvrayf5l",
+  "kind": "ask",
+  "start": 8199,
+  "end": 8344,
+  "messages": [
+   {
+    "role": "user",
+    "content": "eli5 w/o childish analogies"
+   },
+   {
+    "role": "assistant",
+    "content": "Group keeps shared model of project: goals, status, plans. Keeping it current isn't only adding new facts. It also means deciding what counts as relevant, whose data to trust, what to drop, and how to weigh pieces. Those decisions are the \"rules.\"\n\nPoint is, the rules themselves shift as the group works. New info can change how the group handles info. For example, a team finds its schedule estimates keep running wrong, so it starts discounting them. That's why the paragraph before says a meeting can produce \"a new set of rules for solving problems,\" not just a solution.\n\nWhy this matters for the essay: a static medium like paper or a tape recording can hold facts but can't change how it processes them. A programmed computer can, which is why they call it a \"dynamic medium.\""
+   },
+   {
+    "role": "user",
+    "content": "eli5: processing and disposition of information. one sentence."
+   },
+   {
+    "role": "assistant",
+    "content": "\"Processing\" means what group does with a new piece of info, like checking it, comparing it, or weighing it, and \"disposition\" means where that info ends up: kept in the model, filed, passed on to someone, or thrown out."
+   }
+  ],
+  "created": "2026-10-27T23:14:11.385Z"
+ },
+ {
+  "id": "tmvrb01le",
+  "kind": "highlight",
+  "start": 8466,
+  "end": 8497,
+  "created": "2026-10-27T23:15:27.122Z"
+ },
+ {
+  "id": "tmvrb099v",
+  "kind": "highlight",
+  "start": 8563,
+  "end": 8589,
+  "created": "2026-10-27T23:15:37.075Z"
+ },
+ {
+  "id": "tmvrb1262",
+  "kind": "pop",
+  "start": 8834,
+  "end": 8925,
+  "created": "2026-10-27T23:16:14.522Z"
+ },
+ {
+  "id": "tmvrb161s",
+  "kind": "highlight",
+  "start": 8873,
+  "end": 8890,
+  "created": "2026-10-27T23:16:19.552Z"
+ },
+ {
+  "id": "tmvrb1mfg",
+  "kind": "ask",
+  "start": 8894,
+  "end": 8924,
+  "messages": [
+   {
+    "role": "user",
+    "content": "did computers achieve this or was this not achieved until AI or is this not achieved yet? one sentence."
+   },
+   {
+    "role": "assistant",
+    "content": "Mostly done long before AI: spreadsheets (VisiCalc, 1979), simulations, charts and maps let people build \"what if\" pictures of messy problems, and today's AI adds summing up of sloppy, scattered information, but the computer still mostly helps a human make the picture rather than making it alone, so it's partly achieved, not fully."
+   },
+   {
+    "role": "user",
+    "content": "\"coherent\" and \"not well understood situations\" clash"
+   },
+   {
+    "role": "assistant",
+    "content": "There's no real clash, because the two words describe different moments. \"Not well understood\" is the situation at the start: messy, partial data. \"Coherent\" is the picture at the end, after the modeling is done. Like a detective turning scattered clues into one story.\n\nHence the contrast with \"informational housekeeping.\" Payroll is already well understood, so the rules are fixed before the computer starts. In creative work, nobody knows the rules yet. The computer should help people build the picture, the way Engelbart's meeting did."
+   }
+  ],
+  "created": "2026-10-27T23:16:40.780Z"
+ },
+ {
+  "id": "tmvrb6fi1",
+  "kind": "note",
+  "start": 9061,
+  "end": 9106,
+  "messages": [
+   {
+    "role": "note",
+    "content": "not sure this is the meeting, but here's a related demo: https://www.youtube.com/watch?v=B6rKUf9DWRI"
+   }
+  ],
+  "created": "2026-10-27T23:20:25.081Z"
+ },
+ {
+  "id": "tmvrbhphi",
+  "kind": "ask",
+  "start": 10049,
+  "end": 10090,
+  "messages": [
+   {
+    "role": "user",
+    "content": "one recurring topic i'm interested in is focus + context where details are visualized in the context of a broad views. i think collapsible sections in a document are a simple form of this"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes. NLS, the system in that meeting, already did this. Engelbart's \"view specs\" let you clip the outline to the top N levels, or show only the first line of each statement, then jump into one branch for detail. That is a collapsible outline, built around 1968.\n\nThe essay comes back to it twice. \"More detailed information could be displayed when facts had to be pinpointed; more global information could be displayed to answer questions of relevance.\" And near the end, models \"capable of representing progressively more complex ideas without necessarily displaying all the levels of their structure at the same time.\"\n\nThe name came later. George Furnas wrote about \"fisheye views\" (1981 memo, CHI '86 paper). His point: a collapsed section is all-or-nothing, open or shut. A fisheye fades detail gradually, using a \"degree of interest\" score that weighs how important a node is against how far it sits from your focus. So you always see your current node's ancestors and nearby siblings, even deep in the tree. Collapsible sections are the simplest case of that. Card, Mackinlay and Shneiderman's 1999 Readings book made \"focus+context\" a standard term.\n\nWritten from memory, no search done. Exact NLS commands and dates may be a bit off."
+   }
+  ],
+  "created": "2026-10-27T23:29:11.238Z"
+ },
+ {
+  "id": "tmvrbiesr",
+  "kind": "highlight",
+  "start": 10845,
+  "end": 10889,
+  "created": "2026-10-27T23:29:44.043Z"
+ },
+ {
+  "id": "tmvrbimv3",
+  "kind": "note",
+  "start": 10845,
+  "end": 10889,
+  "messages": [
+   {
+    "role": "note",
+    "content": "this naturally makes me think of search/retrieval"
+   },
+   {
+    "role": "user",
+    "content": "one sentence thoughts"
+   },
+   {
+    "role": "assistant",
+    "content": "Closer to zooming than search: Engelbart's NLS let you collapse or expand outline levels and follow links through a structure you already have, so it is the ancestor of hypertext and outliners more than Google, which finds things you don't know where to look for."
+   }
+  ],
+  "created": "2026-10-27T23:29:54.495Z"
+ },
+ {
+  "id": "tmvrbkcze",
+  "kind": "ask",
+  "start": 11294,
+  "end": 11394,
+  "messages": [
+   {
+    "role": "user",
+    "content": "is the internet in 2026 a communication system by this definition? why or why not? two sentences."
+   },
+   {
+    "role": "assistant",
+    "content": "Mostly yes: feeds, search, and recommendation engines are very good at finding and stirring up interests, much like the essay's OLIVER pushing \"events that fit your interests.\" But \"positive\" is the weak spot, because 2026 algorithms mostly stir interest to keep people engaged, not to help them build shared models together, and that cooperative modeling is what the essay actually means by communication (the line itself is just a cartoon caption, not part of the main argument)."
+   }
+  ],
+  "created": "2026-10-27T23:31:15.002Z"
+ },
+ {
+  "id": "tmvrblj85",
+  "kind": "ask",
+  "start": 11627,
+  "end": 11657,
+  "messages": [
+   {
+    "role": "user",
+    "content": "summarization, filtering, grouping/themes, compression"
+   },
+   {
+    "role": "assistant",
+    "content": "Licklider names the problem here but has no tools for it yet. His real worry comes next: we simplify \"how early and drastically\" and conclude \"how prematurely.\" Each of your four ideas is a way to push that moment later.\n\n- **Summarization:** Engelbart's NLS already did a rough version. The outline view was the summary, and the speaker clicked down to detail files. The essay's later phrase about models \"without necessarily displaying all the levels of their structure at the same time\" is the same idea. Today the equivalent is LLM summaries and abstracts.\n- **Filtering:** The essay's \"selective dissemination of information\" and OLIVER \"buffering them from the demanding world\" are both filters. Today: spam filters, feeds, recommender systems.\n- **Grouping/themes:** In NLS, structure came from hand-made outline hierarchies. Today, topic clustering and tagging do it automatically.\n- **Compression:** His crisis example is pruning a game tree to \"two or three plies.\" Faster modeling means you can explore deeper before you have to cut.\n\nCatch: every summary is itself a simplification, made by someone's model. Licklider wanted cooperative modeling, where people can still compare and inspect each other's models. Machine summaries can't do that if you can't see what was dropped. My guess is he'd like summarization only if you can drill back down to the source, the way NLS let you."
+   }
+  ],
+  "created": "2026-10-27T23:32:09.749Z"
+ },
+ {
+  "id": "tmvrbs4w2",
+  "kind": "drawing",
+  "start": 228,
+  "end": 268,
+  "strokes": [
+   {
+    "type": "line",
+    "a": [
+     206,
+     72
+    ],
+    "b": [
+     201,
+     715
+    ]
+   },
+   {
+    "type": "line",
+    "a": [
+     166,
+     686
+    ],
+    "b": [
+     1019,
+     691
+    ]
+   },
+   {
+    "type": "text",
+    "at": [
+     -100,
+     338
+    ],
+    "text": "effective communication using a computer",
+    "angle": -1.5708
+   },
+   {
+    "type": "text",
+    "at": [
+     1033,
+     680
+    ],
+    "text": "time"
+   },
+   {
+    "type": "text",
+    "at": [
+     263,
+     715
+    ],
+    "text": "1968"
+   },
+   {
+    "type": "text",
+    "at": [
+     711,
+     715
+    ],
+    "text": "2026"
+   },
+   {
+    "type": "pen",
+    "points": [
+     [
+      294,
+      629
+     ],
+     [
+      295,
+      629
+     ],
+     [
+      296,
+      628
+     ],
+     [
+      299,
+      628
+     ],
+     [
+      302,
+      627
+     ],
+     [
+      306,
+      626
+     ],
+     [
+      310,
+      624
+     ],
+     [
+      314,
+      623
+     ],
+     [
+      318,
+      622
+     ],
+     [
+      322,
+      622
+     ],
+     [
+      325,
+      621
+     ],
+     [
+      332,
+      620
+     ],
+     [
+      335,
+      619
+     ],
+     [
+      338,
+      618
+     ],
+     [
+      342,
+      617
+     ],
+     [
+      345,
+      616
+     ],
+     [
+      348,
+      615
+     ],
+     [
+      351,
+      613
+     ],
+     [
+      354,
+      612
+     ],
+     [
+      357,
+      611
+     ],
+     [
+      360,
+      610
+     ],
+     [
+      364,
+      608
+     ],
+     [
+      367,
+      607
+     ],
+     [
+      371,
+      606
+     ],
+     [
+      374,
+      605
+     ],
+     [
+      377,
+      603
+     ],
+     [
+      379,
+      602
+     ],
+     [
+      381,
+      601
+     ],
+     [
+      383,
+      601
+     ],
+     [
+      385,
+      599
+     ],
+     [
+      389,
+      598
+     ],
+     [
+      393,
+      596
+     ],
+     [
+      396,
+      593
+     ],
+     [
+      400,
+      591
+     ],
+     [
+      404,
+      589
+     ],
+     [
+      408,
+      587
+     ],
+     [
+      411,
+      585
+     ],
+     [
+      414,
+      583
+     ],
+     [
+      418,
+      581
+     ],
+     [
+      421,
+      580
+     ],
+     [
+      424,
+      578
+     ],
+     [
+      427,
+      576
+     ],
+     [
+      430,
+      574
+     ],
+     [
+      433,
+      572
+     ],
+     [
+      437,
+      569
+     ],
+     [
+      440,
+      566
+     ],
+     [
+      444,
+      563
+     ],
+     [
+      449,
+      559
+     ],
+     [
+      454,
+      555
+     ],
+     [
+      458,
+      551
+     ],
+     [
+      462,
+      546
+     ],
+     [
+      467,
+      541
+     ],
+     [
+      470,
+      537
+     ],
+     [
+      472,
+      533
+     ],
+     [
+      474,
+      530
+     ],
+     [
+      476,
+      528
+     ],
+     [
+      477,
+      526
+     ],
+     [
+      477,
+      524
+     ],
+     [
+      478,
+      519
+     ],
+     [
+      480,
+      514
+     ],
+     [
+      482,
+      509
+     ],
+     [
+      484,
+      504
+     ],
+     [
+      486,
+      500
+     ],
+     [
+      488,
+      496
+     ],
+     [
+      490,
+      493
+     ],
+     [
+      491,
+      490
+     ],
+     [
+      493,
+      487
+     ],
+     [
+      495,
+      484
+     ],
+     [
+      496,
+      482
+     ],
+     [
+      498,
+      479
+     ],
+     [
+      500,
+      476
+     ],
+     [
+      501,
+      473
+     ],
+     [
+      503,
+      470
+     ],
+     [
+      504,
+      467
+     ],
+     [
+      506,
+      463
+     ],
+     [
+      507,
+      460
+     ],
+     [
+      509,
+      456
+     ],
+     [
+      510,
+      452
+     ],
+     [
+      512,
+      448
+     ],
+     [
+      514,
+      441
+     ],
+     [
+      515,
+      438
+     ],
+     [
+      517,
+      435
+     ],
+     [
+      518,
+      432
+     ],
+     [
+      520,
+      428
+     ],
+     [
+      522,
+      424
+     ],
+     [
+      523,
+      420
+     ],
+     [
+      525,
+      416
+     ],
+     [
+      527,
+      412
+     ],
+     [
+      528,
+      408
+     ],
+     [
+      529,
+      405
+     ],
+     [
+      530,
+      402
+     ],
+     [
+      531,
+      398
+     ],
+     [
+      532,
+      395
+     ],
+     [
+      533,
+      392
+     ],
+     [
+      534,
+      389
+     ],
+     [
+      535,
+      386
+     ],
+     [
+      536,
+      384
+     ],
+     [
+      536,
+      383
+     ],
+     [
+      537,
+      382
+     ],
+     [
+      537,
+      381
+     ],
+     [
+      537,
+      379
+     ],
+     [
+      537,
+      375
+     ],
+     [
+      538,
+      371
+     ],
+     [
+      539,
+      367
+     ],
+     [
+      539,
+      362
+     ],
+     [
+      540,
+      359
+     ],
+     [
+      541,
+      357
+     ],
+     [
+      542,
+      354
+     ],
+     [
+      542,
+      352
+     ],
+     [
+      543,
+      350
+     ],
+     [
+      544,
+      349
+     ],
+     [
+      544,
+      347
+     ],
+     [
+      545,
+      345
+     ],
+     [
+      546,
+      344
+     ],
+     [
+      546,
+      343
+     ],
+     [
+      547,
+      341
+     ],
+     [
+      547,
+      340
+     ],
+     [
+      548,
+      338
+     ],
+     [
+      549,
+      336
+     ],
+     [
+      549,
+      335
+     ],
+     [
+      550,
+      333
+     ],
+     [
+      551,
+      331
+     ],
+     [
+      552,
+      329
+     ],
+     [
+      552,
+      327
+     ],
+     [
+      553,
+      326
+     ],
+     [
+      554,
+      324
+     ],
+     [
+      556,
+      322
+     ],
+     [
+      557,
+      320
+     ],
+     [
+      557,
+      318
+     ],
+     [
+      558,
+      317
+     ],
+     [
+      559,
+      316
+     ],
+     [
+      560,
+      314
+     ],
+     [
+      560,
+      313
+     ],
+     [
+      561,
+      312
+     ],
+     [
+      562,
+      310
+     ],
+     [
+      563,
+      309
+     ],
+     [
+      563,
+      308
+     ],
+     [
+      564,
+      306
+     ],
+     [
+      565,
+      305
+     ],
+     [
+      565,
+      304
+     ],
+     [
+      566,
+      303
+     ],
+     [
+      567,
+      302
+     ],
+     [
+      568,
+      300
+     ],
+     [
+      569,
+      299
+     ],
+     [
+      570,
+      298
+     ],
+     [
+      572,
+      295
+     ],
+     [
+      573,
+      294
+     ],
+     [
+      574,
+      292
+     ],
+     [
+      575,
+      290
+     ],
+     [
+      576,
+      288
+     ],
+     [
+      577,
+      287
+     ],
+     [
+      578,
+      285
+     ],
+     [
+      580,
+      284
+     ],
+     [
+      581,
+      282
+     ],
+     [
+      582,
+      281
+     ],
+     [
+      583,
+      280
+     ],
+     [
+      584,
+      279
+     ],
+     [
+      584,
+      278
+     ],
+     [
+      585,
+      276
+     ],
+     [
+      586,
+      275
+     ],
+     [
+      588,
+      274
+     ],
+     [
+      589,
+      273
+     ],
+     [
+      590,
+      271
+     ],
+     [
+      591,
+      270
+     ],
+     [
+      593,
+      269
+     ],
+     [
+      594,
+      268
+     ],
+     [
+      597,
+      266
+     ],
+     [
+      599,
+      264
+     ],
+     [
+      602,
+      263
+     ],
+     [
+      605,
+      261
+     ],
+     [
+      607,
+      260
+     ],
+     [
+      609,
+      259
+     ],
+     [
+      612,
+      258
+     ],
+     [
+      614,
+      257
+     ],
+     [
+      619,
+      255
+     ],
+     [
+      621,
+      254
+     ],
+     [
+      625,
+      252
+     ],
+     [
+      628,
+      251
+     ],
+     [
+      631,
+      250
+     ],
+     [
+      634,
+      249
+     ],
+     [
+      638,
+      248
+     ],
+     [
+      640,
+      247
+     ],
+     [
+      643,
+      246
+     ],
+     [
+      646,
+      245
+     ],
+     [
+      648,
+      244
+     ],
+     [
+      651,
+      243
+     ],
+     [
+      654,
+      242
+     ],
+     [
+      656,
+      242
+     ],
+     [
+      659,
+      241
+     ],
+     [
+      661,
+      240
+     ],
+     [
+      663,
+      239
+     ],
+     [
+      665,
+      239
+     ],
+     [
+      668,
+      238
+     ],
+     [
+      670,
+      237
+     ],
+     [
+      672,
+      236
+     ],
+     [
+      674,
+      235
+     ],
+     [
+      676,
+      235
+     ],
+     [
+      678,
+      234
+     ],
+     [
+      680,
+      233
+     ],
+     [
+      681,
+      233
+     ],
+     [
+      683,
+      232
+     ],
+     [
+      685,
+      232
+     ],
+     [
+      686,
+      231
+     ],
+     [
+      687,
+      230
+     ],
+     [
+      689,
+      230
+     ],
+     [
+      690,
+      229
+     ],
+     [
+      692,
+      229
+     ],
+     [
+      695,
+      228
+     ],
+     [
+      697,
+      227
+     ],
+     [
+      700,
+      227
+     ],
+     [
+      703,
+      226
+     ],
+     [
+      706,
+      225
+     ],
+     [
+      708,
+      225
+     ],
+     [
+      710,
+      224
+     ],
+     [
+      712,
+      224
+     ],
+     [
+      713,
+      224
+     ],
+     [
+      714,
+      223
+     ],
+     [
+      716,
+      223
+     ],
+     [
+      717,
+      223
+     ],
+     [
+      718,
+      223
+     ],
+     [
+      719,
+      222
+     ],
+     [
+      720,
+      222
+     ],
+     [
+      721,
+      222
+     ],
+     [
+      722,
+      222
+     ],
+     [
+      723,
+      222
+     ],
+     [
+      724,
+      222
+     ],
+     [
+      725,
+      221
+     ],
+     [
+      726,
+      221
+     ],
+     [
+      727,
+      221
+     ],
+     [
+      728,
+      221
+     ],
+     [
+      729,
+      221
+     ],
+     [
+      730,
+      221
+     ],
+     [
+      731,
+      220
+     ],
+     [
+      733,
+      220
+     ],
+     [
+      734,
+      219
+     ],
+     [
+      735,
+      219
+     ],
+     [
+      736,
+      219
+     ],
+     [
+      737,
+      219
+     ],
+     [
+      738,
+      219
+     ],
+     [
+      738,
+      218
+     ],
+     [
+      739,
+      218
+     ],
+     [
+      740,
+      218
+     ],
+     [
+      741,
+      218
+     ],
+     [
+      742,
+      218
+     ],
+     [
+      743,
+      218
+     ],
+     [
+      744,
+      218
+     ],
+     [
+      745,
+      218
+     ],
+     [
+      746,
+      218
+     ],
+     [
+      747,
+      217
+     ],
+     [
+      748,
+      217
+     ],
+     [
+      749,
+      217
+     ],
+     [
+      750,
+      217
+     ],
+     [
+      751,
+      217
+     ],
+     [
+      752,
+      217
+     ],
+     [
+      753,
+      217
+     ],
+     [
+      754,
+      217
+     ],
+     [
+      755,
+      216
+     ],
+     [
+      756,
+      216
+     ],
+     [
+      757,
+      216
+     ],
+     [
+      758,
+      216
+     ],
+     [
+      759,
+      216
+     ],
+     [
+      760,
+      216
+     ],
+     [
+      761,
+      216
+     ],
+     [
+      762,
+      216
+     ],
+     [
+      763,
+      216
+     ],
+     [
+      764,
+      216
+     ],
+     [
+      765,
+      216
+     ],
+     [
+      766,
+      216
+     ],
+     [
+      767,
+      216
+     ],
+     [
+      768,
+      216
+     ],
+     [
+      769,
+      216
+     ],
+     [
+      770,
+      216
+     ],
+     [
+      771,
+      216
+     ],
+     [
+      772,
+      216
+     ],
+     [
+      773,
+      216
+     ],
+     [
+      774,
+      216
+     ],
+     [
+      775,
+      216
+     ],
+     [
+      776,
+      216
+     ],
+     [
+      777,
+      216
+     ],
+     [
+      779,
+      216
+     ],
+     [
+      782,
+      216
+     ],
+     [
+      784,
+      216
+     ],
+     [
+      786,
+      216
+     ],
+     [
+      788,
+      216
+     ],
+     [
+      791,
+      216
+     ],
+     [
+      793,
+      216
+     ],
+     [
+      796,
+      216
+     ],
+     [
+      798,
+      216
+     ],
+     [
+      801,
+      216
+     ],
+     [
+      803,
+      216
+     ],
+     [
+      806,
+      216
+     ],
+     [
+      808,
+      216
+     ],
+     [
+      810,
+      216
+     ],
+     [
+      812,
+      216
+     ],
+     [
+      813,
+      216
+     ],
+     [
+      815,
+      216
+     ],
+     [
+      816,
+      216
+     ],
+     [
+      818,
+      216
+     ],
+     [
+      819,
+      216
+     ],
+     [
+      820,
+      216
+     ],
+     [
+      821,
+      216
+     ],
+     [
+      822,
+      216
+     ],
+     [
+      823,
+      216
+     ],
+     [
+      824,
+      216
+     ],
+     [
+      825,
+      216
+     ],
+     [
+      826,
+      216
+     ],
+     [
+      827,
+      216
+     ],
+     [
+      827,
+      215
+     ],
+     [
+      828,
+      215
+     ]
+    ]
+   },
+   {
+    "type": "pen",
+    "points": [
+     [
+      492,
+      460
+     ],
+     [
+      493,
+      460
+     ],
+     [
+      495,
+      460
+     ],
+     [
+      497,
+      461
+     ],
+     [
+      498,
+      462
+     ],
+     [
+      500,
+      463
+     ],
+     [
+      502,
+      465
+     ],
+     [
+      504,
+      466
+     ],
+     [
+      506,
+      468
+     ],
+     [
+      507,
+      469
+     ],
+     [
+      508,
+      470
+     ],
+     [
+      509,
+      471
+     ],
+     [
+      509,
+      472
+     ],
+     [
+      510,
+      472
+     ],
+     [
+      510,
+      473
+     ],
+     [
+      511,
+      474
+     ],
+     [
+      512,
+      475
+     ],
+     [
+      513,
+      476
+     ],
+     [
+      514,
+      477
+     ],
+     [
+      514,
+      478
+     ],
+     [
+      515,
+      480
+     ],
+     [
+      516,
+      481
+     ],
+     [
+      516,
+      482
+     ],
+     [
+      517,
+      483
+     ],
+     [
+      517,
+      482
+     ]
+    ]
+   },
+   {
+    "type": "pen",
+    "points": [
+     [
+      517,
+      458
+     ],
+     [
+      514,
+      458
+     ],
+     [
+      511,
+      459
+     ],
+     [
+      508,
+      461
+     ],
+     [
+      505,
+      463
+     ],
+     [
+      502,
+      465
+     ],
+     [
+      500,
+      466
+     ],
+     [
+      498,
+      468
+     ],
+     [
+      496,
+      469
+     ],
+     [
+      495,
+      470
+     ],
+     [
+      495,
+      471
+     ],
+     [
+      494,
+      472
+     ],
+     [
+      493,
+      473
+     ],
+     [
+      492,
+      474
+     ],
+     [
+      491,
+      475
+     ],
+     [
+      490,
+      476
+     ],
+     [
+      489,
+      477
+     ],
+     [
+      489,
+      476
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "at": [
+     392,
+     446
+    ],
+    "text": "internet"
+   },
+   {
+    "type": "text",
+    "at": [
+     908,
+     197
+    ],
+    "text": "????"
+   },
+   {
+    "type": "pen",
+    "points": [
+     [
+      815,
+      208
+     ],
+     [
+      816,
+      208
+     ],
+     [
+      817,
+      208
+     ],
+     [
+      818,
+      209
+     ],
+     [
+      819,
+      210
+     ],
+     [
+      821,
+      211
+     ],
+     [
+      822,
+      213
+     ],
+     [
+      823,
+      214
+     ],
+     [
+      824,
+      215
+     ],
+     [
+      825,
+      216
+     ],
+     [
+      826,
+      217
+     ],
+     [
+      827,
+      218
+     ],
+     [
+      828,
+      219
+     ],
+     [
+      829,
+      219
+     ],
+     [
+      829,
+      220
+     ],
+     [
+      830,
+      220
+     ],
+     [
+      831,
+      220
+     ],
+     [
+      832,
+      221
+     ],
+     [
+      833,
+      221
+     ],
+     [
+      833,
+      222
+     ],
+     [
+      834,
+      222
+     ],
+     [
+      835,
+      223
+     ]
+    ]
+   },
+   {
+    "type": "pen",
+    "points": [
+     [
+      835,
+      207
+     ],
+     [
+      835,
+      208
+     ],
+     [
+      834,
+      209
+     ],
+     [
+      833,
+      211
+     ],
+     [
+      832,
+      213
+     ],
+     [
+      830,
+      215
+     ],
+     [
+      829,
+      217
+     ],
+     [
+      828,
+      218
+     ],
+     [
+      827,
+      220
+     ],
+     [
+      825,
+      221
+     ],
+     [
+      824,
+      223
+     ],
+     [
+      823,
+      224
+     ],
+     [
+      822,
+      225
+     ],
+     [
+      821,
+      226
+     ],
+     [
+      820,
+      227
+     ],
+     [
+      820,
+      228
+     ],
+     [
+      819,
+      228
+     ],
+     [
+      818,
+      229
+     ],
+     [
+      817,
+      230
+     ],
+     [
+      816,
+      231
+     ],
+     [
+      815,
+      231
+     ],
+     [
+      815,
+      230
+     ],
+     [
+      815,
+      229
+     ],
+     [
+      815,
+      228
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "at": [
+     802,
+     242
+    ],
+    "text": "today"
+   }
+  ],
+  "created": "2026-10-27T23:37:17.762Z"
+ },
+ {
+  "id": "tmvrbvfyv",
+  "kind": "ask",
+  "start": 12095,
+  "end": 12110,
+  "messages": [
+   {
+    "role": "user",
+    "content": "define in one sentence"
+   },
+   {
+    "role": "assistant",
+    "content": "It's a scanning typo for \"communication,\" which the essay defines as \"cooperative modeling,\" meaning people building, maintaining and using a shared model together. Same glitch shows up elsewhere in the copy (\"wit bout,\" \"import ante\")."
+   }
+  ],
+  "created": "2026-10-27T23:39:52.087Z"
+ },
+ {
+  "id": "tmvrbwonw",
+  "kind": "ask",
+  "start": 12259,
+  "end": 12648,
+  "messages": [
+   {
+    "role": "user",
+    "content": "eli5 w/o childish analogies. 1 sentence."
+   },
+   {
+    "role": "assistant",
+    "content": "In crises like the 1962 Cuban Missile Crisis (my guess at what they mean), leaders faced hundreds of possible moves at each step but only had time to weigh a few, and could rarely think more than two or three moves ahead (\"if we do X, they do Y, then we do Z\") before they had to act."
+   },
+   {
+    "role": "user",
+    "content": "so the point here is that a computer would allow for more scenarios to be considered?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes, mostly. \"Ply\" is chess and game-tree language, so they picture computer-aided models that let decision makers explore more branches, and more moves deep, before time runs out. Their next line says it: \"we need to be able to model faster and to greater depth.\" The computer doesn't decide, though. It helps people build and test models together, so less gets cut by time pressure."
+   }
+  ],
+  "created": "2026-10-27T23:40:50.012Z"
+ },
+ {
+  "id": "tmvrbyvw2",
+  "kind": "ask",
+  "start": 12969,
+  "end": 13002,
+  "messages": [
+   {
+    "role": "user",
+    "content": "there is a tension between fast and depth, without losing definition or resolution"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes, for a lone mind fast and deep pull against each other. Essay says so just above: crisis deciders looked only \"two or three\" plies deep before they had to act. Time ran out before depth did.\n\nLicklider's bet is that the machine loosens the trade-off. It does not remove it. The computer expands the branches mechanically, the way chess programs do, so more depth fits in the same time. \"Plies\" is chess language, and the crisis is likely Cuba 1962 (guess).\n\nYour point about losing definition gets answered later in the essay. Good models can hold \"progressively more complex ideas without necessarily displaying all the levels of their structure at the same time.\" So the full detail stays inside the machine, and you see only the level you need. That is Engelbart's outline: a global view first, then you drill into a file when a fact must be pinned down. Speed comes from what gets shown, depth from what gets stored.\n\nToday the tension is still there. Weather and climate models still trade grid detail against run time. Dashboards are fast but flatten nuance. Zoomable maps and outlines are the best working version of his idea."
+   },
+   {
+    "role": "user",
+    "content": "zooming not to be confused with summarization"
+   },
+   {
+    "role": "assistant",
+    "content": "Agreed, and the difference matters. Zooming hides levels but keeps them. You can always drill back down. Summarizing replaces the levels with a shorter text, and you can't rebuild the detail from it.\n\nLicklider's line fits zooming: \"without necessarily displaying all the levels.\" The levels still exist; they just aren't shown. Engelbart's NLS outlines worked that way too. You collapse to the headings, expand again, and every line is still in the file.\n\nA summary is also someone's judgment of what matters. That brings back the flaw he saw in a lone mental model, which \"serves its owner's hopes more faithfully than it serves reason.\" Zooming lets the group check the source. Being able to \"thumb through the speaker's files\" mid-talk only helps if the files themselves are there, not a digest of them.\n\nToday the line blurs. AI summaries feel like zooming out, but there's often no way to zoom back in. They're safest when every claim links to its source."
+   },
+   {
+    "role": "user",
+    "content": "one sentence response: in october 2026 which tools help us zoom in and out without summarizing information? with or without AI usage, either one."
+   },
+   {
+    "role": "assistant",
+    "content": "Outliners that fold and unfold the real text (Workflowy, Logseq, Obsidian, Emacs org-mode), zoomable canvases (Heptabase, tldraw, Miro), code-folding editors (VS Code), and map tools (Google Maps) all let you zoom out and back in with every detail still there; AI tools like NotebookLM come close only because each claim links to its source passage. Based on my mid-2026 knowledge, not a fresh search."
+   }
+  ],
+  "created": "2026-10-27T23:42:32.690Z"
+ },
+ {
+  "id": "tmvrc2ugz",
+  "kind": "pop",
+  "start": 13198,
+  "end": 13337,
+  "created": "2026-10-27T23:45:37.475Z"
+ },
+ {
+  "id": "tmvrc3o7i",
+  "kind": "ask",
+  "start": 13212,
+  "end": 13318,
+  "messages": [
+   {
+    "role": "user",
+    "content": "eli5 w/o childish analogies. 1 sentence."
+   },
+   {
+    "role": "assistant",
+    "content": "When a group decides, it is the same shared model-building as communication, just pushed to the point where people act on the result."
+   }
+  ],
+  "created": "2026-10-27T23:46:16.014Z"
+ },
+ {
+  "id": "tmvrc4dw1",
+  "kind": "underline",
+  "start": 13646,
+  "end": 13670,
+  "created": "2026-10-27T23:46:49.297Z"
+ },
+ {
+  "id": "tmvrc4ndl",
+  "kind": "underline",
+  "start": 13751,
+  "end": 13764,
+  "created": "2026-10-27T23:47:01.593Z"
+ },
+ {
+  "id": "tmvrc4pt9",
+  "kind": "underline",
+  "start": 13817,
+  "end": 13830,
+  "created": "2026-10-27T23:47:04.749Z"
+ },
+ {
+  "id": "tmvrc4yaw",
+  "kind": "ask",
+  "start": 13567,
+  "end": 13596,
+  "messages": [
+   {
+    "role": "user",
+    "content": "define"
+   },
+   {
+    "role": "assistant",
+    "content": "Here \"organization\" means how the computer system is arranged: the hardware layout plus the way people get to use it. In 1960s jargon, \"computer organization\" was roughly what we now call architecture.\n\n\"Particular form\" points to the interactive, multiaccess (time-sharing) setup the essay describes later: one big machine, many consoles, users working on-line at the same time, sharing files and programs. The contrast is batch processing, where you hand in a job and get the printout back hours later. That older mode is the \"informational housekeeping\" use they wave off.\n\nNote the phrase \"with its programs and its data.\" They mean the whole system, not just the box. The hardware alone is not the medium."
+   }
+  ],
+  "created": "2026-10-27T23:47:15.752Z"
+ },
+ {
+  "id": "tmvrc69mn",
+  "kind": "ask",
+  "start": 13914,
+  "end": 13975,
+  "messages": [
+   {
+    "role": "user",
+    "content": "from 0-100% how false was this before AI and when?"
+   },
+   {
+    "role": "assistant",
+    "content": "My guess: about 0–10% false for most of the pre-AI era, rising to maybe 25–35% by the smartphone years. The number depends on what \"alone\" means.\n\nWhat they meant: bare hardware does nothing. Value comes from programs, data and people using it together. In that sense it stayed true before AI. Every useful thing a computer did, someone had written the program and someone had put in the data.\n\nWhere it slipped:\n- **1968 to about 1990: ~0% false.** You bought hardware, then paid for software, built your data and trained your staff. \"Buy a computer\" solved nothing.\n- **Mid-1990s: ~15–20%.** A home PC came with Windows, a modem, a browser, email and AOL discs in the box. For simple communication like letters and calls, \"buy a computer\" nearly did solve the problem. But only because the programs and network came bundled. That is their point, not against it.\n- **2007 smartphone onward: ~25–35%.** Buy the device, and email, video calls, maps and messaging work out of the box. Their exact mocked slogan became nearly true for everyday communication.\n\nTheir deeper goal never got close before AI: computers helping people build shared models of hard problems. Groupware and wikis still needed humans to do all the modeling. AI is the first real crack, because the machine now adds content itself, not just moves it around. Even so, it's trained on human data, so \"alone\" still doesn't quite hold.\n\nThese percentages are my judgment, not measured facts."
+   },
+   {
+    "role": "user",
+    "content": "which kind of AI in october 2026 (use web search) brings us to which percentage levels today?"
+   },
+   {
+    "role": "assistant",
+    "content": "My guess for Oct 2026: about **40–60% false**, depending on the kind of AI. The rest still holds, because people still set the goal, supply the data and judge the result.\n\n- **Chat models (GPT-6.1, Opus 5.5, Gemini): ~40%.** They add new content: drafts, explanations, rough models. That's real input, not just switching. But they still wait for a human prompt and are trained on human writing.\n- **Meeting AI: ~45%.** This is closest to Engelbart's room. Notetakers transcribe, summarize and translate live. Newer \"agentic\" ones file tickets and draft documents during the call. But they record and tidy up the group's model. They don't build it.\n- **Agents that do tasks on their own (coding agents, computer use): ~55–60% for narrow jobs.** These are the nearest thing to \"the computer alone\" doing useful work for hours. Even the best agent scores only about 65% on a hard terminal-task benchmark, so it fails roughly one task in three and a human still checks the output.\n- **Personal agents (OLIVER-style): ~30%.** They handle inbox, scheduling and small errands. They are still far from knowing \"your value structure\" well enough to trust them with it.\n\nTheir core idea, people building shared models of hard problems together, is maybe **~35% false**. AI can now put forward its own draft model, but humans still have to agree on it. \"Buy AI and your communication problems will be solved\" is still a slogan worth mocking.\n\nAll the percentages are my judgment. Only the product facts come from the sources.\n\nSources:\n- [AI Agents News Brief, Oct 17 2026](https://aiagentsdirectory.com/news/ai-agents-news-brief-october-17-2026)\n- [Best AI coding agents, Oct 2026](https://www.morphllm.com/best-ai-coding-agents-2026)\n- [LLM Gateway timeline](https://llmgateway.io/timeline)\n- [Best AI models, Oct 2026](https://slash-digital.io/en/insights/ai-models-2026/)\n- [TechTarget: AI meeting assistants 2026](https://www.techtarget.com/enterprise-software/tip/8-AI-meeting-assistants-to-consider-in-2026)\n- [Tana: AI meeting assistants 2026](https://tana.inc/blog/best-ai-meeting-assistants-2026)"
+   },
+   {
+    "role": "user",
+    "content": "what about vulnpocalypse and blacktober? one sentence response."
+   },
+   {
+    "role": "assistant",
+    "content": "They push \"the computer alone\" toward maybe 60–70% false for offense, my guess, because AI now finds real bugs at scale on its own (Mythos-era scans turned up about 7× the usual flaws, and Black October's 14-year-old PHP2Shell bugs were reportedly found with AI help), but people still pick the targets, launch the attacks and race to patch, no successful exploit is confirmed yet, and one study finds exploitation rates haven't risen, so it's \"cheap discovery\" more than \"the computer alone.\"\n\nSources:\n- [NBC News: The 'Vulnpocalypse'](https://www.nbcnews.com/tech/security/anthropic-claude-mythos-ai-hackers-cybersecurity-vulnerabilities-rcna273673)\n- [Ironplate: AI found 75 bugs in one scan](https://ironplate.ai/blog/vulnpocalypse-ai-vulnerability-discovery-2026)\n- [Root Evidence: Vulnpocalypse isn't showing up in the data](https://finance.yahoo.com/technology/ai/articles/root-evidence-finds-vulnpocalypse-isn-130000120.html)\n- [YourStory: Black October AI hacking fears](https://yourstory.com/ai-story/ai-hacking-black-october-php-flaws)\n- [Security Affairs: PHP2Shell, no confirmed successful exploits](https://securityaffairs.com/?p=201538)\n- [iTWire: PHP2Shell 14-year-old bugs](https://itwire.com/business-it-news/security/php2shell-the-14-year-old-bugs-that-pulled-cyber-gov-au-and-government-sites-worldwide-offline)\n- [Debajit Sarkar: Black October 2026](https://dsarkar.substack.com/p/black-october-2026)"
+   }
+  ],
+  "created": "2026-10-27T23:48:17.087Z"
+ },
+ {
+  "id": "tmvrcm2s3",
+  "kind": "ask",
+  "start": 14582,
+  "end": 14623,
+  "messages": [
+   {
+    "role": "user",
+    "content": "even then huh?"
+   },
+   {
+    "role": "assistant",
+    "content": "Yes, even then. Interactive computing in 1968 was rare, maybe a thousand people at a handful of time-sharing sites (MIT, SDC, Berkeley). But anyone who used it got hooked fast. Switching from batch punch cards to typing and getting an answer in seconds felt like magic.\n\nLicklider was the chief zealot. He wrote \"Man-Computer Symbiosis\" in 1960. In 1963 he sent his \"Intergalactic Computer Network\" memo, and as head of ARPA's IPTO he poured money into time-sharing. Taylor was a believer too: he pushed for ARPANET in 1966. \"Some of us\" probably means themselves. The bet paid off, but it took decades, not \"a few years.\""
+   }
+  ],
+  "created": "2026-10-28T00:00:34.707Z"
+ },
+ {
+  "id": "tmvrcmu7q",
+  "kind": "highlight",
+  "start": 15257,
+  "end": 15323,
+  "created": "2026-10-28T00:01:10.262Z"
+ },
+ {
+  "id": "tmvrcnapx",
+  "kind": "ask",
+  "start": 15305,
+  "end": 15323,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Is social media a switching function or a modeling function?"
+   },
+   {
+    "role": "assistant",
+    "content": "Mostly switching, with a twist. Feed or DM is store-and-forward on a big scale: posts get routed from many people to many people, and the information is not changed on the way. That is \"two tape recorders\" with a ranking algorithm added.\n\nPlatforms do model, but they model you, not the shared problem. The recommender builds a model of your tastes so it can target ads and pick what you see. You can't see that model or change it. Licklider wanted the reverse: \"a common medium that can be contributed to and experimented with by all.\"\n\nCloser to his modeling idea: Wikipedia, Google Docs, Figma, GitHub, and shared spreadsheets. In those, people build and change one outside model together. Funny turn: the feed algorithm looks a bit like his OLIVER, which \"knows your value structure,\" but it works for the platform instead of for you.\n\nThe \"legal and administrative obstacles\" line is real history. In 1966 the FCC opened its first Computer Inquiry. That process ended up keeping regulated \"basic\" transmission separate from unregulated \"enhanced\" processing. That split is part of why the net's services grew up outside the phone companies. This is from memory; I didn't search."
+   }
+  ],
+  "created": "2026-10-28T00:01:31.653Z"
+ },
+ {
+  "id": "tmvrco4a2",
+  "kind": "pop",
+  "start": 15494,
+  "end": 15839,
+  "created": "2026-10-28T00:02:09.962Z"
+ },
+ {
+  "id": "tmvrconaz",
+  "kind": "ask",
+  "start": 15701,
+  "end": 15737,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Does this represent AI, the internet or computers before AI?"
+   },
+   {
+    "role": "assistant",
+    "content": "Mostly the internet. The \"two technologies\" are transmission (phone lines, run by AT&T and other carriers) and processing (computers). Melding them means networked computing, which is what ARPANET started in 1969 and the internet grew into.\n\nIt isn't AI. Their point is people modeling ideas together through computers, not machines thinking on their own. The OLIVER agent later in the essay is the part that comes closest to AI.\n\nThe \"legal obstacles\" were real. AT&T's 1956 consent decree kept it out of the computer business. In 1966 the FCC opened its Computer Inquiry to decide where \"communication\" ends and \"data processing\" begins. That line stayed blurry for decades."
+   }
+  ],
+  "created": "2026-10-28T00:02:34.619Z"
+ },
+ {
+  "id": "tmvrcpogq",
+  "kind": "ask",
+  "start": 15494,
+  "end": 15518,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Does this mean like the actual fiber optic cables?"
+   },
+   {
+    "role": "assistant",
+    "content": "Not fiber exactly. In 1968 there was no practical optical fiber yet; Corning made the first low-loss fiber in 1970. \"Information transmission\" means the whole business of moving signals: copper phone lines, coax, microwave relay towers, satellites. That world was run by common carriers, mostly AT&T and the Bell System.\n\n\"Separately institutionalized\" means two different industries with different rules. AT&T moved bits but, under a 1956 consent decree, was kept out of the computer business. IBM and other computer makers processed bits but did not run networks. The \"legal and administrative obstacles\" are things like that decree and the FCC's Computer Inquiry, opened in 1966 to decide where \"processing\" ends and \"communication\" begins.\n\nToday the two are fully merged: the internet runs on fiber, and routers are computers."
+   }
+  ],
+  "created": "2026-10-28T00:03:22.778Z"
+ },
+ {
+  "id": "tmvrcqh46",
+  "kind": "ask",
+  "start": 15523,
+  "end": 15545,
+  "messages": [
+   {
+    "role": "user",
+    "content": "In one sentence, what does information processing encompass in the context of this paper?"
+   },
+   {
+    "role": "assistant",
+    "content": "Here \"information processing\" means everything computers do with data once they have it: storing it, running programs on it, and above all building and changing the shared models the authors care about. It stands opposite \"information transmission,\" which is just moving bits from place to place, the phone companies' job.\n\nSplit was legal too: 1956 consent decree kept AT&T out of the computer business, and in 1966 the FCC opened its first \"Computer Inquiry\" to decide where communications ended and data processing began."
+   }
+  ],
+  "created": "2026-10-28T00:03:59.910Z"
+ }
+]

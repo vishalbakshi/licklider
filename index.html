@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licklider Reader (shared)</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; color: #000; font-family: serif; }
+  h1, h2, .meta, .hint { font-family: sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 120px; }
+  #filters { position: fixed; top: 32px; left: max(16px, calc(50% - 360px - 80px)); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: sans-serif; }
+  #filters button { width: 36px; height: 36px; padding: 0; border: 1px solid #000; background: #fff; color: #000; font: inherit; cursor: pointer; }
+  #filters button.on[data-kind=ask] { background: #00e5ff; }
+  #filters button.on[data-kind=note] { background: #1f2a6e; color: #fff; }
+  #filters button.on[data-kind=pop] { background: #b4b8ff; }
+  #filters button.on[data-kind=underline] { background: #000; color: #fff; }
+  #filters button.on[data-kind=highlight] { background: #ffd300; }
+  #filters a { font-size: 12px; color: #000; }
+  #deleteAll { position: fixed; top: 32px; right: max(16px, calc(50% - 360px - 120px)); font-family: sans-serif; font-size: 12px; color: #000; }
+  @media (max-width: 860px) { #filters, #deleteAll { display: none; } }
+  img { max-width: 100%; }
+  figure { text-align: center; }
+  figure.margin { width: 170px; margin: 0 0 12px; }
+  figure.margin.left { float: left; margin-right: 20px; }
+  figure.margin.right { float: right; margin-left: 20px; }
+  h2 { clear: both; }
+  mark.hl { background: #ffd300; color: #000; }
+  mark.ul { background: none; color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  mark.ask { cursor: pointer; }
+  mark.pop { background: none; color: inherit; }
+  mark.draw, #popText span.draw { border-bottom: 1px dashed #000; cursor: pointer; }
+  /* where these overlap, notes beat asks beat pop-outs */
+  body.show-pops mark.pop { background: #b4b8ff; }
+  body.show-pops mark.pop { cursor: pointer; }
+  mark.hl.ask:not(.note), #popText span.hl.ask:not(.note) { background: #00e5ff; }
+  mark.hl.ask.note, #popText span.hl.ask.note { background: #1f2a6e; color: #fff; }
+  #paper mark.ask mark.pop { background: none; }
+  mark.hl.active { outline: 1px solid #000; }
+  #pop { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; background: #f5efe0; padding: 8vh 10vw; }
+  #pop.open { display: flex; }
+  #popText .hl { background: #ffd300; }
+  #popText .ul { text-decoration: underline; text-decoration-thickness: .05em; text-underline-offset: .12em; }
+  #popText { margin: 0; max-width: 1200px; max-height: 100%; font-family: "EB Garamond", Garamond, serif; font-style: italic; line-height: 1.25; color: #000; text-align: center; }
+  #tip {
+    position: absolute; display: none; flex-direction: column; background: #fff; border: 1px solid #000;
+    width: min(420px, calc(100vw - 32px)); max-height: min(70vh, 560px);
+  }
+  #tip.open { display: flex; }
+  #tip.fixed { position: fixed; z-index: 101; }
+  #popText .ask { cursor: pointer; }
+  .tip-head { display: flex; align-items: flex-start; }
+  #tipDelete { flex: none; margin: 6px; padding: 2px; border: 0; background: none; cursor: pointer; }
+  #tipDelete svg { display: block; width: 16px; height: 16px; }
+  .tip-quote { flex: 1; padding: 8px; font-style: italic; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .tip-msgs { flex: 1; overflow-y: auto; padding: 0 8px; }
+  .msg.user { font-weight: bold; margin-top: 8px; }
+  .tip-input { display: flex; padding: 8px; }
+  .tip-input textarea { flex: 1; resize: none; }
+  .msg.note { margin-top: 8px; padding-left: 6px; border-left: 2px solid #1f2a6e; }
+  .msg iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; margin-top: 6px; }
+  /* read-only copy: no new chats, no deleting */
+  #tipForm, #tipDelete, #deleteAll { display: none !important; }
+  #drop { border: 1px dashed #000; padding: 24px; margin: 24px 0; font-family: sans-serif; }
+  #drop.over { background: #f5efe0; }
+</style>
+</head>
+<body>
+  <nav id="filters" aria-label="Show only marked paragraphs">
+    <button type="button" data-kind="ask" title="Asks (⌘A)">A</button>
+    <button type="button" data-kind="note" title="Notes (Shift+N)">N</button>
+    <button type="button" data-kind="pop" title="Pop-outs (⌘P)">P</button>
+    <button type="button" data-kind="underline" title="Underlines (⌘U)">U</button>
+    <button type="button" data-kind="highlight" title="Highlights (Shift+H)">H</button>
+    <a href="#" id="clearFilters">clear all</a>
+  </nav>
+  <a href="#" id="deleteAll">delete all</a>
+  <main><article id="paper"></article></main>
+
+  <div id="tip" role="dialog" aria-label="Ask about this passage">
+    <div class="tip-head">
+      <div class="tip-quote" id="tipQuote"></div>
+      <button id="tipDelete" type="button" title="Delete this chat" aria-label="Delete this chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6"/></svg>
+      </button>
+    </div>
+    <div class="tip-msgs" id="tipMsgs"></div>
+    <form class="tip-input" id="tipForm">
+      <textarea id="tipText" rows="1" placeholder="Ask about this passage… (Enter to send, Esc to close)"></textarea>
+    </form>
+  </div>
+
+  <div id="pop"><blockquote id="popText"></blockquote></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+<script src="build.js"></script>
+<script src="draw.js"></script>
+<script>
+const paper = document.getElementById('paper');
+const tip = document.getElementById('tip');
+const tipQuote = document.getElementById('tipQuote');
+const tipMsgs = document.getElementById('tipMsgs');
+const tipForm = document.getElementById('tipForm');
+const tipText = document.getElementById('tipText');
+const pop = document.getElementById('pop');
+const popText = document.getElementById('popText');
+
+// annotations: {id, kind: 'ask'|'note'|'highlight'|'underline'|'pop', start, end, quote, context?, messages?, created}
+// (entries saved before `kind` existed are asks)
+let threads = [];
+let pending = null;     // selection waiting for its first question: {start, end, quote, context, rect}
+let active = null;      // thread shown in the tooltip
+let busy = false;
+
+// ---------- render the essay ----------
+function render(blocks) {
+  for (const b of blocks) {
+    let el;
+    if (b.kind === 'title') { el = document.createElement('h1'); el.textContent = b.text; }
+    else if (b.kind === 'meta') { el = document.createElement('p'); el.className = 'meta'; el.textContent = b.text; }
+    else if (b.kind === 'h') { el = document.createElement('h2'); el.textContent = b.text; }
+    else if (b.kind === 'p') {
+      el = document.createElement('p'); el.textContent = b.text;
+      if (/^\[\d+\]/.test(b.text)) el.className = 'ref';
+    } else if (b.kind === 'fig') {
+      el = document.createElement('figure');
+      el.className = b.float ? `margin ${b.float}` : 'full';
+      const img = document.createElement('img');
+      img.src = b.src; img.alt = b.caption || 'Illustration from the original article'; img.loading = 'lazy';
+      el.appendChild(img);
+      if (b.caption) { const fc = document.createElement('figcaption'); fc.textContent = b.caption; el.appendChild(fc); }
+    }
+    el.dataset.block = b.id;
+    paper.appendChild(el);
+    if (b.kind === 'meta' && blocks[blocks.indexOf(b) + 1]?.kind !== 'meta') {
+      // UI-only (data-ui) so it doesn't shift saved note offsets
+      const note = document.createElement('p');
+      note.className = 'hint'; note.dataset.ui = '1';
+      note.textContent = 'Note: this copy uses gender-neutral wording (he → they, him → them, his → their, himself → themself, men → people, man → person, man-computer → person-computer), with verbs adjusted to match. The 1968 original uses masculine words throughout; cited titles are left as published.';
+      paper.appendChild(note);
+      const hint = document.createElement('p');
+      hint.className = 'hint'; hint.dataset.ui = '1';
+      hint.textContent = 'Cyan passages were asked about and navy ones are notes; click one to read its chat. Select text and press P to pop it out (P again to close). Click a dashed-underlined passage to see its drawing (D to close). '
+        + 'Show only the paragraphs you marked, with ⌘ or Shift: A asks · N notes · P pop-outs (periwinkle) · H highlights · U underlines. Press again to show everything. Use Shift+H and Shift+N; the browser keeps ⌘H and ⌘N for itself.';
+      paper.appendChild(hint);
+    }
+  }
+}
+
+// ---------- text offsets (stable across highlights, since <mark> doesn't change text) ----------
+function textNodes() {
+  const out = [];
+  const w = document.createTreeWalker(paper, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest('[data-ui]') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  while (w.nextNode()) out.push(w.currentNode);
+  return out;
+}
+function offsetOf(container, offset) {
+  // count text before (container, offset), skipping UI-only nodes
+  const r = document.createRange();
+  r.setStart(paper, 0); r.setEnd(container, offset);
+  let n = 0;
+  for (const t of textNodes()) {
+    if (!r.intersectsNode(t)) break;
+    if (t === container) { n += offset; break; }
+    n += t.data.length;
+  }
+  return n;
+}
+const MARK_CLASS = { highlight: 'hl', underline: 'ul', ask: 'hl ask', note: 'hl ask note', pop: 'pop', drawing: 'draw' };
+function wrap(start, end, id, kind) {
+  const marks = [];
+  let pos = 0;
+  const jobs = [];
+  for (const t of textNodes()) {
+    const a = pos, b = pos + t.data.length;
+    pos = b;
+    if (b <= start || a >= end) continue;
+    jobs.push([t, Math.max(start, a) - a, Math.min(end, b) - a]);
+  }
+  for (let [t, s, e] of jobs) {
+    if (!t.data.slice(s, e).trim()) continue;
+    if (e < t.data.length) t.splitText(e);
+    if (s > 0) t = t.splitText(s);
+    const m = document.createElement('mark');
+    m.className = MARK_CLASS[kind];
+    m.dataset.thread = id;
+    t.parentNode.insertBefore(m, t); m.appendChild(t);
+    marks.push(m);
+  }
+  return marks;
+}
+function unwrap(id) {
+  paper.querySelectorAll(`mark[data-thread="${id}"]`).forEach(m => {
+    const p = m.parentNode;
+    while (m.firstChild) p.insertBefore(m.firstChild, m);
+    p.removeChild(m); p.normalize();
+  });
+}
+function marksOf(id) { return [...paper.querySelectorAll(`mark[data-thread="${id}"]`)]; }
+
+// ---------- persistence ----------
+async function loadThreads() {
+  try { threads = await (await fetch('annotations.json')).json(); } catch { threads = []; }
+  // annotations.json keeps only offsets (no essay text), so rebuild each quote and its paragraph from the page
+  const text = textNodes().map(t => t.data).join('');
+  const blocks = [];
+  let pos = 0;
+  for (const el of paper.querySelectorAll('[data-block]')) { blocks.push([pos, pos + el.textContent.length, el.textContent]); pos += el.textContent.length; }
+  for (const t of threads) {
+    t.quote = text.slice(t.start, t.end).replace(/\s+/g, ' ').trim();
+    t.context = blocks.filter(([a, b]) => a < t.end && b > t.start).map(b => b[2]).join('\n\n').slice(0, 4000);
+    wrap(t.start, t.end, t.id, t.kind || 'ask');
+  }
+}
+let saveTimer;
+function save() {}   // read-only copy: nothing is saved
+
+// ---------- selection -> keystrokes ----------
+function currentSelection() {
+  const sel = getSelection();
+  if (!sel.rangeCount || sel.isCollapsed) return null;
+  const r = sel.getRangeAt(0);
+  if (!paper.contains(r.commonAncestorContainer)) return null;
+  const quote = r.toString().replace(/\s+/g, ' ').trim();
+  if (quote.length < 2) return null;
+  const start = offsetOf(r.startContainer, r.startOffset);
+  const end = offsetOf(r.endContainer, r.endOffset);
+  const blockOf = n => (n.nodeType === 1 ? n : n.parentElement).closest('[data-block]');
+  const b0 = blockOf(r.startContainer), b1 = blockOf(r.endContainer);
+  const ctx = [];
+  for (let el = b0; el; el = el.nextElementSibling) {
+    if (!el.dataset.ui) ctx.push(el.textContent);
+    if (el === b1 || ctx.length > 4) break;
+  }
+  const rects = [...r.getClientRects()].filter(x => x.width > 0);
+  return { start, end, quote, context: ctx.join('\n\n').slice(0, 4000), rect: r.getBoundingClientRect(), firstRect: rects[0] || r.getBoundingClientRect() };
+}
+
+document.addEventListener('keydown', e => {
+  const popped = pop.classList.contains('open');
+  if (Draw.isOpen()) {
+    // while drawing, only D (close), ⌘Z (undo) and Delete (selected text) do anything
+    if (e.target.closest?.('textarea, input')) return;
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); return Draw.undo(); }
+    if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); return Draw.deleteSelected(); }
+    if (e.key.toLowerCase() === 'd' && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); Draw.close(); }
+    return;
+  }
+  if (e.key === 'Escape' && tip.classList.contains('open')) return closeTip();
+  if (e.altKey || e.isComposing || e.target.closest?.('textarea, input')) return;
+  // ⌘/Ctrl or Shift + letter: show only the paragraphs with that kind of mark
+  const kind = { KeyA: 'ask', KeyN: 'note', KeyP: 'pop', KeyH: 'highlight', KeyU: 'underline' }[e.code];
+  if (e.metaKey || e.ctrlKey || e.shiftKey) {
+    if (kind && (e.metaKey || e.ctrlKey) !== e.shiftKey) { e.preventDefault(); toggleFilter(kind); }
+    return;
+  }
+  const k = e.key.toLowerCase();
+  if (k !== 'p') return;   // read-only copy: only pop-out
+  // while popped out, keys act on the text selected in it, or else the whole popped passage
+  const s = popped ? popSelection() || popSel : currentSelection();
+  if (!s) return;
+  e.preventDefault();
+  if (k === 'p') {
+    if (popped) return closePop();
+    return openPop(s);
+  }
+  getSelection().removeAllRanges();
+  if (k === 'a' || k === 'n') {
+    if (tip.classList.contains('open')) closeTip();
+    pending = s; pending.kind = k === 'n' ? 'note' : 'ask'; active = null;
+    openTip(s.rect, s.quote, []);
+    // temporary highlight so the passage stays visible while you type
+    pending.marks = wrap(s.start, s.end, 'pending', pending.kind);
+    setActiveMarks('pending');
+  } else if (k === 'h' || k === 'u') {
+    const kind = k === 'h' ? 'highlight' : 'underline';
+    const t = { id: 't' + Date.now().toString(36), kind, start: s.start, end: s.end, quote: s.quote, created: new Date().toISOString() };
+    threads.push(t);
+    wrap(t.start, t.end, t.id, kind);
+    save();
+  } else if (k === 'x') {
+    // clear every annotation touching the selection (except a chat still streaming)
+    const hit = threads.filter(t => t.start < s.end && t.end > s.start && !(busy && t === active));
+    if (!hit.length) return;
+    if (hit.includes(active)) closeTip();
+    hit.forEach(t => unwrap(t.id));
+    threads = threads.filter(t => !hit.includes(t));
+    save();
+  }
+  refreshPop();
+});
+document.addEventListener('mousedown', e => {
+  if (tip.classList.contains('open') && !tip.contains(e.target) && !e.target.closest('mark.ask, #popText .ask')) closeTip();
+});
+
+// ---------- condensed view: only paragraphs with the chosen kinds of marks ----------
+const FILTER = {
+  ask: ['mark.ask:not(.note)', 'asks'], note: ['mark.note', 'notes'], pop: ['mark.pop', 'pop-outs'],
+  highlight: ['mark.hl:not(.ask)', 'highlights'], underline: ['mark.ul', 'underlines'],
+};
+const filters = new Set();
+function toggleFilter(kind) {
+  filters.has(kind) ? filters.delete(kind) : filters.add(kind);
+  document.body.classList.toggle('show-pops', filters.has('pop'));
+  let note = document.getElementById('filterNote');
+  if (!note) {
+    note = document.createElement('p');
+    note.id = 'filterNote'; note.className = 'hint'; note.dataset.ui = '1';
+    paper.prepend(note);
+  }
+  const sel = [...filters].map(f => FILTER[f][0]).join(', ');
+  let shown = 0;
+  for (const el of paper.children) {
+    if (el === note) continue;
+    el.hidden = !!sel && !(el.dataset.block && el.querySelector(sel));
+    if (sel && !el.hidden) shown++;
+  }
+  const names = [...filters].map(f => FILTER[f][1]).join(', ');
+  note.hidden = !sel;
+  note.textContent = shown ? `Showing only paragraphs with ${names}. Press the same keys again to show everything.`
+                           : `No ${names} yet. Press the same keys again to show everything.`;
+  document.querySelectorAll('#filters button').forEach(b => {
+    b.classList.toggle('on', filters.has(b.dataset.kind));
+    b.setAttribute('aria-pressed', filters.has(b.dataset.kind));
+  });
+  scrollTo(0, 0);
+}
+document.querySelectorAll('#filters button').forEach(b => b.onclick = () => toggleFilter(b.dataset.kind));
+// delete every mark and chat; the first click asks, a second within 4s confirms
+const deleteAll = document.getElementById('deleteAll');
+let deleteTimer = null;
+deleteAll.onclick = e => {
+  e.preventDefault();
+  if (!deleteTimer) {
+    deleteAll.textContent = 'confirm?';
+    deleteTimer = setTimeout(() => { deleteTimer = null; deleteAll.textContent = 'delete all'; }, 4000);
+    return;
+  }
+  clearTimeout(deleteTimer); deleteTimer = null; deleteAll.textContent = 'delete all';
+  if (!busy) closeTip();
+  const keep = busy ? active : null;   // a chat still streaming stays
+  threads.filter(t => t !== keep).forEach(t => unwrap(t.id));
+  threads = keep ? [keep] : [];
+  save();
+  [...filters].forEach(toggleFilter);
+  refreshPop();
+};
+document.getElementById('clearFilters').onclick = e => {
+  e.preventDefault();
+  [...filters].forEach(toggleFilter);
+};
+
+// ---------- pop-out quote ----------
+let popSel = null;
+let popMap = [];   // page offset of each character shown in the pop-out (between the quote marks)
+function openPop(s) {
+  popSel = s;
+  markPop();
+  pop.classList.add('open');
+  // largest size that fits the screen
+  let size = Math.min(innerWidth * 0.08, innerHeight * 0.14);
+  popText.style.fontSize = size + 'px';
+  while (size > 16 && (popText.scrollHeight > pop.clientHeight * 0.84 || popText.scrollWidth > popText.clientWidth)) {
+    size -= 2; popText.style.fontSize = size + 'px';
+  }
+}
+function markPop() {
+  // redraw the popped passage with the same highlights/underlines, character for character, as the page
+  const raw = textNodes().map(t => t.data).join('').slice(popSel.start, popSel.end);
+  const classAt = pos => {
+    const here = threads.filter(t => t.start <= pos && pos < t.end);
+    if (pending?.marks && pending.start <= pos && pos < pending.end) here.push({ kind: pending.kind });
+    return [...new Set(here.flatMap(t => MARK_CLASS[t.kind || 'ask'].split(' ')))].sort().join(' ');
+  };
+  const runs = [];   // [className, text]; whitespace runs collapse to one space, as in the quote
+  popMap = [];
+  for (let i = 0; i < raw.length; i++) {
+    const space = /\s/.test(raw[i]);
+    if (space && (!runs.length || /\s$/.test(runs[runs.length - 1][1]))) continue;
+    const cls = classAt(popSel.start + i), ch = space ? ' ' : raw[i];
+    if (runs.length && runs[runs.length - 1][0] === cls) runs[runs.length - 1][1] += ch;
+    else runs.push([cls, ch]);
+    popMap.push(popSel.start + i);
+  }
+  if (runs.length && runs[runs.length - 1][1].endsWith(' ')) { runs[runs.length - 1][1] = runs[runs.length - 1][1].slice(0, -1); popMap.pop(); }
+  let at = 0;
+  popText.replaceChildren('“', ...runs.map(([cls, text]) => {
+    const span = document.createElement('span');
+    span.className = cls; span.textContent = text; span.dataset.at = at;
+    at += text.length;
+    return span;
+  }), '”');
+}
+function refreshPop() { if (popSel) markPop(); }
+function popIndex(node, offset) {
+  // index into popMap of a point inside the pop-out text
+  const span = (node.nodeType === 1 ? node : node.parentElement).closest('#popText span');
+  if (span) return +span.dataset.at + (node.nodeType === 3 ? offset : 0);
+  // on a quote mark, or between children of the blockquote
+  if (node === popText) return [...popText.childNodes].slice(0, offset).reduce((n, c) => n + (c.nodeType === 1 ? c.textContent.length : 0), 0);
+  return node === popText.firstChild ? 0 : popMap.length;
+}
+function popSelection() {
+  // the part of the pop-out the reader selected, in page offsets (like currentSelection)
+  const sel = getSelection();
+  if (!sel.rangeCount || sel.isCollapsed) return null;
+  const r = sel.getRangeAt(0);
+  if (!popText.contains(r.commonAncestorContainer)) return null;
+  const a = popIndex(r.startContainer, r.startOffset), b = popIndex(r.endContainer, r.endOffset);
+  if (b <= a) return null;
+  const quote = r.toString().replace(/[“”]$|^[“”]/g, '').replace(/\s+/g, ' ').trim();
+  if (quote.length < 2) return null;
+  const rect = r.getBoundingClientRect();
+  return { start: popMap[a], end: popMap[b - 1] + 1, quote, context: popSel.context, rect, firstRect: rect };
+}
+function closePop() {
+  if (tip.classList.contains('fixed')) closeTip();
+  pop.classList.remove('open'); popSel = null;
+}
+// clicking an asked passage in the pop-out reopens its chat
+popText.addEventListener('click', e => {
+  const span = e.target.closest('span.ask');
+  if (!span || !getSelection().isCollapsed) return;
+  const pos = popMap[+span.dataset.at];
+  const t = threads.find(t => ['ask', 'note'].includes(t.kind || 'ask') && t.start <= pos && pos < t.end);
+  if (!t) return;
+  dropPending();
+  active = t;
+  openTip(span.getBoundingClientRect(), t.quote, t.messages);
+  setActiveMarks(t.id);
+});
+
+// ---------- clicking an asked passage ----------
+paper.addEventListener('click', e => {
+  // clicking a drawn passage (dashed underline) opens its drawing
+  const dm = e.target.closest('mark.draw');
+  if (dm && getSelection().isCollapsed) {
+    const t = threads.find(t => t.id === dm.dataset.thread);
+    if (t) return Draw.open({ quote: t.quote, strokes: t.strokes, readOnly: true });
+  }
+  // with pop-outs shown (⌘P), clicking periwinkle text pops that passage out again
+  const pm = document.body.classList.contains('show-pops') && e.target.closest('mark.pop');
+  if (pm && getSelection().isCollapsed) {
+    const t = threads.find(t => t.id === pm.dataset.thread);
+    if (t) return openPop({ start: t.start, end: t.end, quote: t.quote, context: pm.closest('[data-block]')?.textContent || '' });
+  }
+  const m = e.target.closest('mark.ask');
+  if (!m || !getSelection().isCollapsed) return;
+  const t = threads.find(t => t.id === m.dataset.thread);
+  if (!t) return;
+  dropPending();
+  active = t;
+  const ms = marksOf(t.id);
+  openTip(unionRect(ms), t.quote, t.messages);
+  setActiveMarks(t.id);
+});
+function unionRect(els) {
+  const rs = els.flatMap(el => [...el.getClientRects()]);
+  const l = Math.min(...rs.map(r => r.left)), t = Math.min(...rs.map(r => r.top));
+  const r = Math.max(...rs.map(r => r.right)), b = Math.max(...rs.map(r => r.bottom));
+  return { left: l, top: t, right: r, bottom: b, width: r - l, height: b - t };
+}
+function setActiveMarks(id) {
+  paper.querySelectorAll('mark.hl.active').forEach(m => m.classList.remove('active'));
+  if (id) marksOf(id).forEach(m => m.classList.add('active'));
+}
+
+// ---------- tooltip ----------
+let anchor = null;
+function openTip(rect, quote, messages) {
+  tip.classList.toggle('fixed', !!popSel);
+  const [ox, oy] = tipOrigin();
+  anchor = { left: rect.left + ox, top: rect.top + oy, bottom: rect.bottom + oy, width: rect.width };
+  tipQuote.textContent = quote;
+  tipText.placeholder = (active || pending)?.kind === 'note'
+    ? 'Write a note… (Enter to save, Esc to close)' : 'Ask about this passage… (Enter to send, Esc to close)';
+  document.getElementById('tipDelete').style.display = active ? '' : 'none';
+  tipMsgs.innerHTML = '';
+  for (const m of messages) addMsg(m.role, m.content);
+  tip.classList.add('open');
+  position();
+  tipText.value = ''; autosize();
+  tipText.focus({ preventScroll: true });
+  tipMsgs.scrollTop = tipMsgs.scrollHeight;
+  reveal();
+}
+function tipOrigin() { return tip.classList.contains('fixed') ? [0, 0] : [scrollX, scrollY]; }
+function reveal() { if (!popSel) tip.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+function position() {
+  if (!anchor) return;
+  const [ox, oy] = tipOrigin();
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  const cx = anchor.left + anchor.width / 2;
+  let left = Math.min(Math.max(cx - w / 2, ox + 16), ox + innerWidth - w - 16);
+  const spaceBelow = oy + innerHeight - anchor.bottom;
+  const below = spaceBelow > h + 20 || anchor.top - oy < h + 20;
+  tip.classList.toggle('below', below); tip.classList.toggle('above', !below);
+  tip.style.left = left + 'px';
+  tip.style.top = (below ? anchor.bottom + 12 : anchor.top - h - 12) + 'px';
+}
+function closeTip() {
+  tip.classList.remove('open');
+  dropPending();
+  setActiveMarks(null);
+  active = null; anchor = null;
+  refreshPop();
+}
+function dropPending() {
+  if (pending?.marks) { unwrap('pending'); pending.marks = null; }
+}
+document.getElementById('tipDelete').onclick = () => {
+  if (!active || busy) return;
+  unwrap(active.id);
+  threads = threads.filter(t => t !== active);
+  save(); closeTip();
+};
+addEventListener('resize', () => {
+  if (!tip.classList.contains('open') || popSel) return;
+  const ms = marksOf(active ? active.id : 'pending');
+  if (ms.length) { const r = unionRect(ms); anchor = { left: r.left + scrollX, top: r.top + scrollY, bottom: r.bottom + scrollY, width: r.width }; }
+  position();
+});
+
+function autosize() { tipText.style.height = 'auto'; tipText.style.height = Math.min(tipText.scrollHeight, 140) + 'px'; }
+tipText.addEventListener('input', () => { autosize(); position(); });
+tipText.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); tipForm.requestSubmit(); }
+});
+
+function addMsg(role, content) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + role;
+  if (role === 'assistant') d.innerHTML = md(content); else d.textContent = content;
+  embedVideos(d, content);
+  tipMsgs.appendChild(d);
+  return d;
+}
+function embedVideos(el, text) {
+  // a YouTube link in a message gets a small player under it (starting at ?t= if given)
+  const re = /https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?[^\s]*?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})([^\s]*)/g;
+  for (const [, id, rest] of text.matchAll(re)) {
+    const t = /[?&#]t=(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?/.exec(rest);
+    const start = t ? (+t[1] || 0) * 3600 + (+t[2] || 0) * 60 + (+t[3] || 0) : 0;
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${id}` + (start ? `?start=${start}` : '');
+    f.title = 'YouTube video'; f.allowFullscreen = true; f.loading = 'lazy';
+    f.allow = 'encrypted-media; picture-in-picture; fullscreen';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    el.appendChild(f);
+  }
+}
+
+tipForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const q = tipText.value.trim();
+  if (!q || busy) return;
+  if (!active) {
+    // first question turns the pending selection into a saved thread
+    dropPending();
+    active = { id: 't' + Date.now().toString(36), kind: pending.kind, start: pending.start, end: pending.end, quote: pending.quote,
+               context: pending.context, messages: [], created: new Date().toISOString() };
+    threads.push(active);
+    wrap(active.start, active.end, active.id, active.kind);
+    setActiveMarks(active.id);
+    pending = null;
+    document.getElementById('tipDelete').style.display = '';
+    refreshPop();
+  }
+  const thread = active;
+  thread.messages.push({ role: 'user', content: q });
+  addMsg('user', q);
+  tipText.value = ''; autosize();
+  const out = addMsg('assistant', '');
+  out.textContent = '…';
+  tipMsgs.scrollTop = tipMsgs.scrollHeight;
+  position();
+  busy = true;
+  save();
+
+  let text = '';
+  try {
+    const res = await fetch('/api/ask', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: thread.kind || 'ask', quote: thread.quote, context: thread.context, messages: thread.messages })
+    });
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      text += dec.decode(value, { stream: true });
+      if (active === thread) {
+        const stick = tipMsgs.scrollHeight - tipMsgs.scrollTop - tipMsgs.clientHeight < 40;
+        out.innerHTML = md(text);
+        if (stick) tipMsgs.scrollTop = tipMsgs.scrollHeight;
+        position();
+      }
+    }
+  } catch (err) {
+    text += `\n\n**Couldn't reach the local server.** Is \`python3 server.py\` still running? (${err.message})`;
+    out.innerHTML = md(text);
+  }
+  thread.messages.push({ role: 'assistant', content: text.trim() });
+  busy = false;
+  save();
+  if (active === thread) { position(); reveal(); tipText.focus({ preventScroll: true }); }
+});
+
+// ---------- tiny markdown ----------
+function esc(s) { return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function inline(s) {
+  return esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>')
+    .replace(/(^|\W)_([^_]+)_(?=\W|$)/g, '$1<em>$2</em>');
+}
+function md(src) {
+  const out = [];
+  src.replace(/\r/g, '').split(/(```[\s\S]*?(?:```|$))/).forEach(chunk => {
+    if (chunk.startsWith('```')) { out.push('<pre><code>' + esc(chunk.replace(/^```\w*\n?|```$/g, '')) + '</code></pre>'); return; }
+    for (const para of chunk.split(/\n{2,}/)) {
+      const lines = para.split('\n').filter(l => l.trim());
+      if (!lines.length) continue;
+      if (lines.every(l => /^\s*[-*•]\s+/.test(l))) out.push('<ul>' + lines.map(l => '<li>' + inline(l.replace(/^\s*[-*•]\s+/, '')) + '</li>').join('') + '</ul>');
+      else if (lines.every(l => /^\s*\d+[.)]\s+/.test(l))) out.push('<ol>' + lines.map(l => '<li>' + inline(l.replace(/^\s*\d+[.)]\s+/, '')) + '</li>').join('') + '</ol>');
+      else out.push('<p>' + lines.map(l => inline(l.replace(/^#+\s*/, ''))).join('<br>') + '</p>');
+    }
+  });
+  return out.join('');
+}
+
+// ---------- boot ----------
+// The essay isn't hosted here: the reader brings their own copy of the PDF and it is built in the browser.
+const PDF_URL = 'https://internetat50.com/references/Licklider_Taylor_The-Computer-As-A-Communications-Device.pdf';
+const PDF_SHA256 = 'ce5264200a367821cf3da7217400e8f5aa0b1e2a4d1ec6e87ffc94a7e90dd68c';
+const drop = document.createElement('div');
+drop.id = 'drop'; drop.dataset.ui = '1';
+drop.innerHTML = `<p>This page shows one reader's highlights, notes and questions on Licklider and Taylor's 1968 essay
+  "The Computer as a Communication Device". The essay isn't included here.</p>
+  <p>1. Download the PDF from <a href="${PDF_URL}">internetat50.com</a>.<br>
+  2. Drop it on this box, or choose it: <input type="file" accept="application/pdf"></p>
+  <p id="dropStatus"></p>`;
+paper.appendChild(drop);
+const dropStatus = drop.querySelector('#dropStatus');
+async function openPdf(file) {
+  try {
+    dropStatus.textContent = 'Building the essay from your PDF…';
+    const data = await file.arrayBuffer();
+    const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', data))].map(b => b.toString(16).padStart(2, '0')).join('');
+    const [figures, fixups] = await Promise.all(['figures.json', 'fixups.json'].map(f => fetch(f).then(r => r.json())));
+    const blocks = await buildEssay(data, figures, fixups);
+    drop.remove();
+    render(blocks);
+    await loadThreads();
+    if (hash !== PDF_SHA256) {
+      const warn = document.createElement('p');
+      warn.className = 'hint'; warn.dataset.ui = '1';
+      warn.textContent = 'Warning: this is not the same PDF file as the one these notes were made on, so the highlights may not line up with the right words.';
+      paper.prepend(warn);
+    }
+  } catch (err) {
+    dropStatus.textContent = `Couldn't read that file as the essay PDF (${err.message}).`;
+  }
+}
+drop.querySelector('input').onchange = e => e.target.files[0] && openPdf(e.target.files[0]);
+drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+drop.ondragleave = () => drop.classList.remove('over');
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); if (e.dataTransfer.files[0]) openPdf(e.dataTransfer.files[0]); };
+</script>
+</body>
+</html>
