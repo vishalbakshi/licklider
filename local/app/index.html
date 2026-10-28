@@ -37,6 +37,8 @@
   mark.hl.ask.note, #popText span.hl.ask.note { background: #1f2a6e; color: #fff; }
   #paper mark.ask mark.pop { background: none; }
   mark.hl.active { outline: 1px solid #000; }
+  /* while filtering, marks of other kinds look like plain text */
+  #paper mark.faded { background: none; color: inherit; text-decoration: none; border-bottom: none; }
   #pop { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; background: #f5efe0; padding: 8vh 10vw; }
   #pop.open { display: flex; }
   #popText .hl { background: #ffd300; }
@@ -325,6 +327,7 @@ function toggleFilter(kind) {
     el.hidden = !!sel && !(el.dataset.block && el.querySelector(sel));
     if (sel && !el.hidden) shown++;
   }
+  paper.querySelectorAll('mark').forEach(m => m.classList.toggle('faded', !!sel && !m.matches(sel)));
   const names = [...filters].map(f => FILTER[f][1]).join(', ');
   note.hidden = !sel;
   note.textContent = shown ? `Showing only paragraphs with ${names}. Press the same keys again to show everything.`
