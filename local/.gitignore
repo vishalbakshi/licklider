@@ -1,0 +1,7 @@
+# built from your own PDF by tools/rebuild.sh
+source/
+build/
+app/paper.json
+app/figures/
+data/
+__pycache__/
