@@ -28,11 +28,11 @@
   mark.hl { background: #ffd300; color: #000; }
   mark.ul { background: none; color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
   mark.ask { cursor: pointer; }
-  mark.pop { background: none; color: inherit; }
+  mark.pop { background: #eef0ff; color: inherit; }   /* a faint periwinkle, so pop-outs show without the filter */
   mark.draw, #popText span.draw { border-bottom: 1px dashed #000; cursor: pointer; }
   /* where these overlap, notes beat asks beat pop-outs */
   body.show-pops mark.pop { background: #b4b8ff; }
-  body.show-pops mark.pop { cursor: pointer; }
+  mark.pop:not(.faded) { cursor: pointer; }
   mark.hl.ask:not(.note), #popText span.hl.ask:not(.note) { background: #00e5ff; }
   mark.hl.ask.note, #popText span.hl.ask.note { background: #1f2a6e; color: #fff; }
   #paper mark.ask mark.pop { background: none; }
@@ -63,6 +63,11 @@
   #tipAsk.on { background: #000; color: #fff; }
   .msg.note { margin-top: 8px; padding-left: 6px; border-left: 2px solid #1f2a6e; }
   .msg iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; margin-top: 6px; }
+  /* a drawing or image in a reply; click for full screen */
+  .msg img.pic { display: block; max-width: 100%; max-height: 260px; margin: 6px 0; background: #fff; border: 1px solid #000; cursor: zoom-in; }
+  #picView { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; background: rgba(0, 0, 0, .85); cursor: zoom-out; }
+  #picView.open { display: flex; }
+  #picView img { max-width: 92vw; max-height: 92vh; background: #fff; }
 </style>
 </head>
 <body>
@@ -92,6 +97,7 @@
   </div>
 
   <div id="pop"><blockquote id="popText"></blockquote></div>
+  <div id="picView"><img alt=""></div>
 
 <script src="draw.js"></script>
 <script>
@@ -463,8 +469,10 @@ paper.addEventListener('click', e => {
     const t = threads.find(t => t.id === dm.dataset.thread);
     if (t) return openDrawing(t);
   }
-  // with pop-outs shown (⌘P), clicking periwinkle text pops that passage out again
-  const pm = document.body.classList.contains('show-pops') && e.target.closest('mark.pop');
+  // clicking periwinkle text pops that passage out again (an ask or note inside it opens its chat instead,
+  // and while filtering for other kinds it's plain text)
+  let pm = e.target.closest('mark.pop:not(.faded)');
+  if (pm && e.target.closest('mark.ask:not(.faded)')) pm = null;
   if (pm && getSelection().isCollapsed) {
     const t = threads.find(t => t.id === pm.dataset.thread);
     if (t) return openPop({ start: t.start, end: t.end, quote: t.quote, context: pm.closest('[data-block]')?.textContent || '' });
@@ -570,6 +578,20 @@ function addMsg(role, content) {
   tipMsgs.appendChild(d);
   return d;
 }
+// a drawing or image in a reply opens full screen; a click or Esc closes it
+const picView = document.getElementById('picView');
+tipMsgs.addEventListener('click', e => {
+  if (!e.target.matches('img.pic')) return;
+  // as large as fits, at its own shape (a drawing has no size of its own, only a shape)
+  const img = picView.querySelector('img'), k = e.target.naturalWidth / e.target.naturalHeight || 1;
+  img.src = e.target.src;
+  img.style.width = `min(92vw, ${92 * k}vh)`;
+  picView.classList.add('open');
+});
+picView.addEventListener('click', () => picView.classList.remove('open'));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && picView.classList.contains('open')) { e.stopImmediatePropagation(); picView.classList.remove('open'); }
+}, true);
 function embedVideos(el, text) {
   // a YouTube link in a message gets a small player under it (starting at ?t= if given)
   const re = /https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?[^\s]*?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})([^\s]*)/g;
@@ -656,6 +678,7 @@ tipForm.addEventListener('submit', async e => {
 function esc(s) { return s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 function inline(s) {
   return esc(s)
+    .replace(/!\[([^\]]*)\]\((https?:\/\/[^\s)]+)\)/g, '<img class="pic" alt="$1" src="$2">')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>')
@@ -664,6 +687,14 @@ function inline(s) {
 function md(src) {
   const out = [];
   src.replace(/\r/g, '').split(/(```[\s\S]*?(?:```|$))/).forEach(chunk => {
+    if (/^```svg\b/.test(chunk)) {
+      // a drawing: shown as an image (so nothing in it runs), once its block has closed
+      const svg = chunk.replace(/^```svg\n?|```$/g, '').trim();
+      out.push(/```$/.test(chunk) && svg.startsWith('<svg')
+        ? `<img class="pic" alt="drawing" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg.includes('xmlns') ? svg : svg.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"'))}">`
+        : '<p><em>drawing…</em></p>');
+      return;
+    }
     if (chunk.startsWith('```')) { out.push('<pre><code>' + esc(chunk.replace(/^```\w*\n?|```$/g, '')) + '</code></pre>'); return; }
     for (const para of chunk.split(/\n{2,}/)) {
       const lines = para.split('\n').filter(l => l.trim());

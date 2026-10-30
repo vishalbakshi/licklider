@@ -26,8 +26,22 @@ MODEL = os.environ.get("CLAUDE_MODEL")  # e.g. "sonnet"; default = your Claude C
 WEB_TOOLS = "WebSearch,WebFetch"
 CLAUDE = shutil.which("claude") or os.path.expanduser("~/.local/bin/claude")
 
+CAVEMAN = os.path.expanduser("~/.claude/skills/caveman/SKILL.md")   # the caveman skill, if installed, sets the voice
+
 os.makedirs(DATA, exist_ok=True)
 save_lock = threading.Lock()
+
+
+def voice():
+    """The caveman skill's rules, without its frontmatter; the reader's own short style if it isn't installed."""
+    if not os.path.exists(CAVEMAN):
+        return ("Write ~90% caveman: short words, short clipped sentences, drop most articles and filler. But keep enough small words "
+                '("the", "is", "because", "but") that each sentence reads smooth on first pass; clarity beats purity. No preamble, '
+                'no restating question, no pleasantries. Example style: "Claim very bold. In 1968 no ARPANET yet, only a few '
+                "time-sharing sites. Licklider was funding the network anyway. Bet paid off, but slower than 'few years.'\"")
+    body = open(CAVEMAN).read().split("---", 2)[-1].strip()
+    return ("Write every answer in the voice of the caveman skill below. Its parts about slash commands, hooks, tool runs and "
+            f"the terminal don't apply here.\n\n<caveman_skill>\n{body}\n</caveman_skill>\n")
 
 
 def paper_text():
@@ -48,8 +62,10 @@ def paper_text():
 
 SYSTEM = f"""You are a reading companion inside a local reader for J.C.R. Licklider and Robert W. Taylor's 1968 essay "The Computer as a Communication Device".
 
-The reader highlights a passage and asks about it. Write ~90% caveman: short words, short clipped sentences, drop most articles and filler. But keep enough small words ("the", "is", "because", "but") that each sentence reads smooth on first pass; clarity beats purity. No preamble, no restating question, no pleasantries. Example style: "Claim very bold. In 1968 no ARPANET yet, only a few time-sharing sites. Licklider was funding the network anyway. Bet paid off, but slower than 'few years.'"
+The reader highlights a passage and asks about it. {voice()}
 Facts must still be right: history (ARPA, IPTO, time-sharing, ARPANET, Engelbart demo), links to today. Say "guess" when guessing. You can search the web and fetch pages: do it when the reader asks you to or when the answer needs current or specific facts you aren't sure of, and name the sources you used. Usually 1-4 lines. Longer only if reader ask. Plain text; bullet list only if truly list.
+
+The reader's chat shows pictures. When asked for a picture, diagram, sketch or chart, draw it as one self-contained SVG in a ```svg code block: a viewBox, no scripts, no outside files, text in a plain font. It shows in the chat, and a click opens it full screen. A real image found on the web can be shown with ![what it is](https://its-direct-image-url).
 
 In this copy the wording is gender-neutral (he/him/his became they/them/their, men/man became people/person, "man-computer" became "person-computer"; cited titles unchanged); the 1968 original uses masculine words. Quote this copy's wording.
 
@@ -132,7 +148,9 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Type", "text/plain; charset=utf-8")
         self.end_headers()
 
-        proc = subprocess.Popen(cmd, cwd=DATA, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+        # without an API key in its environment, claude uses your subscription login instead of billing the API
+        env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
+        proc = subprocess.Popen(cmd, cwd=DATA, env=env, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE, text=True, bufsize=1)
         proc.stdin.write(build_prompt(req))
         proc.stdin.close()

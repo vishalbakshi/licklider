@@ -2756,6 +2756,14 @@
    {
     "role": "assistant",
     "content": "When a group decides, it is the same shared model-building as communication, just pushed to the point where people act on the result."
+   },
+   {
+    "role": "user",
+    "content": "\"pushed to the point\" seems ripe for a simple black and white with 1 or 2 colors visual"
+   },
+   {
+    "role": "assistant",
+    "content": "```svg\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 720 270\" font-family=\"Helvetica, Arial, sans-serif\">\n  <rect width=\"720\" height=\"270\" fill=\"#fff\"/>\n\n  <!-- Stage 1: separate mental models -->\n  <circle cx=\"75\" cy=\"105\" r=\"26\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <circle cx=\"125\" cy=\"85\" r=\"26\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <circle cx=\"110\" cy=\"145\" r=\"26\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <text x=\"100\" y=\"200\" font-size=\"13\" text-anchor=\"middle\">separate models</text>\n\n  <!-- Stage 2: converging -->\n  <circle cx=\"258\" cy=\"112\" r=\"30\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <circle cx=\"276\" cy=\"102\" r=\"30\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <circle cx=\"270\" cy=\"124\" r=\"30\" fill=\"none\" stroke=\"#000\" stroke-width=\"2\"/>\n  <text x=\"268\" y=\"200\" font-size=\"13\" text-anchor=\"middle\">converging</text>\n\n  <!-- Stage 3: shared model -->\n  <circle cx=\"425\" cy=\"112\" r=\"36\" fill=\"#ddd\" stroke=\"#000\" stroke-width=\"2.5\"/>\n  <text x=\"425\" y=\"200\" font-size=\"13\" text-anchor=\"middle\">shared model</text>\n\n  <!-- Communication baseline -->\n  <line x1=\"40\" y1=\"225\" x2=\"470\" y2=\"225\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <polygon points=\"470,220 480,225 470,230\" fill=\"#000\"/>\n  <text x=\"255\" y=\"250\" font-size=\"13\" text-anchor=\"middle\">communication = \"cooperative modeling\"</text>\n\n  <!-- Decision threshold -->\n  <line x1=\"505\" y1=\"40\" x2=\"505\" y2=\"235\" stroke=\"#c0392b\" stroke-width=\"2.5\" stroke-dasharray=\"7,5\"/>\n  <text x=\"505\" y=\"30\" font-size=\"14\" font-weight=\"bold\" fill=\"#c0392b\" text-anchor=\"middle\">decide</text>\n\n  <!-- Push into action -->\n  <line x1=\"461\" y1=\"112\" x2=\"600\" y2=\"112\" stroke=\"#c0392b\" stroke-width=\"3\"/>\n  <polygon points=\"600,104 616,112 600,120\" fill=\"#c0392b\"/>\n  <rect x=\"620\" y=\"88\" width=\"88\" height=\"48\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"2.5\"/>\n  <text x=\"664\" y=\"109\" font-size=\"13\" text-anchor=\"middle\" fill=\"#c0392b\">act /</text>\n  <text x=\"664\" y=\"126\" font-size=\"13\" text-anchor=\"middle\" fill=\"#c0392b\">effect</text>\n  <text x=\"610\" y=\"200\" font-size=\"13\" text-anchor=\"middle\" fill=\"#c0392b\">\"effect-producing\"</text>\n</svg>\n```\n\nThe black part is ordinary communication: separate mental models move toward one shared model. The red part is the \"push\": the group commits to the shared model, and it starts changing things in the world."
    }
   ],
   "created": "2026-10-27T23:46:16.014Z"
@@ -5725,5 +5733,57 @@
    }
   ],
   "created": "2026-10-28T01:59:24.885Z"
+ },
+ {
+  "id": "tmvtsfwhm",
+  "kind": "ask",
+  "start": 6799,
+  "end": 6811,
+  "messages": [
+   {
+    "role": "user",
+    "content": "can you create a simple diagram (black and white and one or two colors to highlight) which shows how rushing to oversimplify the externalized mental model causes a loss or misrepresentation of the data in an individual's mental model?"
+   },
+   {
+    "role": "assistant",
+    "content": "Left: one person's mental model, with facts, insights, guesses, feelings and caveats. Right: the outline they put on the screen when rushed. Orange shows a guess that now looks like a fact. Red dashed shows what got lost. Project details are made up for illustration.\n\n```svg\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 820 470\" font-family=\"Helvetica, Arial, sans-serif\">\n  <rect x=\"0\" y=\"0\" width=\"820\" height=\"470\" fill=\"#ffffff\"/>\n\n  <!-- Left panel: mental model -->\n  <text x=\"175\" y=\"28\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"#000\">Mental model (one head)</text>\n  <rect x=\"10\" y=\"40\" width=\"330\" height=\"330\" rx=\"10\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/>\n\n  <!-- links -->\n  <line x1=\"170\" y1=\"100\" x2=\"230\" y2=\"150\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"215\" y=\"112\" font-size=\"11\" font-style=\"italic\" fill=\"#000\">insight: late part</text>\n  <text x=\"215\" y=\"126\" font-size=\"11\" font-style=\"italic\" fill=\"#000\">caused failure</text>\n  <line x1=\"100\" y1=\"106\" x2=\"100\" y2=\"200\" stroke=\"#000\" stroke-width=\"1\"/>\n  <line x1=\"260\" y1=\"186\" x2=\"260\" y2=\"230\" stroke=\"#000\" stroke-width=\"1\"/>\n\n  <!-- nodes -->\n  <rect x=\"30\" y=\"70\" width=\"140\" height=\"36\" rx=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"100\" y=\"92\" text-anchor=\"middle\" font-size=\"12\">Fact: test failed</text>\n\n  <rect x=\"190\" y=\"150\" width=\"140\" height=\"36\" rx=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"260\" y=\"172\" text-anchor=\"middle\" font-size=\"12\">Fact: supplier late</text>\n\n  <rect x=\"30\" y=\"200\" width=\"140\" height=\"42\" rx=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\" stroke-dasharray=\"5,4\"/>\n  <text x=\"100\" y=\"218\" text-anchor=\"middle\" font-size=\"12\">Guess: fix ~2 months</text>\n  <text x=\"100\" y=\"233\" text-anchor=\"middle\" font-size=\"11\" font-style=\"italic\">(unsure: 1 to 4)</text>\n\n  <rect x=\"190\" y=\"230\" width=\"140\" height=\"42\" rx=\"6\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"260\" y=\"248\" text-anchor=\"middle\" font-size=\"12\">Caveat: fails only</text>\n  <text x=\"260\" y=\"263\" text-anchor=\"middle\" font-size=\"12\">in cold weather</text>\n\n  <ellipse cx=\"100\" cy=\"310\" rx=\"75\" ry=\"20\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"100\" y=\"314\" text-anchor=\"middle\" font-size=\"12\">Feeling: team worn out</text>\n\n  <!-- Middle funnel -->\n  <text x=\"410\" y=\"78\" text-anchor=\"middle\" font-size=\"12\" font-style=\"italic\">pressure of events</text>\n  <polygon points=\"350,90 470,180 470,240 350,330\" fill=\"#e6e6e6\" stroke=\"#000\" stroke-width=\"1\"/>\n  <text x=\"418\" y=\"203\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">rush to</text>\n  <text x=\"418\" y=\"221\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"bold\">simplify</text>\n  <line x1=\"470\" y1=\"210\" x2=\"490\" y2=\"210\" stroke=\"#000\" stroke-width=\"2\"/>\n  <polygon points=\"490,204 500,210 490,216\" fill=\"#000\"/>\n\n  <!-- Right panel: externalized model -->\n  <text x=\"645\" y=\"28\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\" fill=\"#000\">Externalized model (on screen)</text>\n  <rect x=\"480\" y=\"40\" width=\"330\" height=\"330\" rx=\"10\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/>\n\n  <rect x=\"500\" y=\"70\" width=\"290\" height=\"36\" rx=\"4\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"512\" y=\"92\" font-size=\"12\">1. Test failed</text>\n\n  <rect x=\"500\" y=\"120\" width=\"290\" height=\"36\" rx=\"4\" fill=\"#fdf0e2\" stroke=\"#d9822b\" stroke-width=\"2.5\"/>\n  <text x=\"512\" y=\"142\" font-size=\"12\">2. Fix takes 2 months</text>\n  <text x=\"512\" y=\"174\" font-size=\"11\" font-style=\"italic\" fill=\"#d9822b\">guess now reads as fact; range gone</text>\n\n  <rect x=\"500\" y=\"195\" width=\"215\" height=\"34\" rx=\"4\" fill=\"none\" stroke=\"#c62828\" stroke-width=\"1.5\" stroke-dasharray=\"5,4\"/>\n  <text x=\"512\" y=\"216\" font-size=\"12\" fill=\"#c62828\">Cause: supplier late</text>\n  <line x1=\"510\" y1=\"212\" x2=\"635\" y2=\"212\" stroke=\"#c62828\" stroke-width=\"1.5\"/>\n  <text x=\"728\" y=\"216\" font-size=\"12\" font-weight=\"bold\" fill=\"#c62828\">LOST</text>\n\n  <rect x=\"500\" y=\"245\" width=\"215\" height=\"34\" rx=\"4\" fill=\"none\" stroke=\"#c62828\" stroke-width=\"1.5\" stroke-dasharray=\"5,4\"/>\n  <text x=\"512\" y=\"266\" font-size=\"12\" fill=\"#c62828\">Caveat: cold weather only</text>\n  <line x1=\"510\" y1=\"262\" x2=\"665\" y2=\"262\" stroke=\"#c62828\" stroke-width=\"1.5\"/>\n  <text x=\"728\" y=\"266\" font-size=\"12\" font-weight=\"bold\" fill=\"#c62828\">LOST</text>\n\n  <rect x=\"500\" y=\"295\" width=\"215\" height=\"34\" rx=\"4\" fill=\"none\" stroke=\"#c62828\" stroke-width=\"1.5\" stroke-dasharray=\"5,4\"/>\n  <text x=\"512\" y=\"316\" font-size=\"12\" fill=\"#c62828\">Feeling: team worn out</text>\n  <line x1=\"510\" y1=\"312\" x2=\"650\" y2=\"312\" stroke=\"#c62828\" stroke-width=\"1.5\"/>\n  <text x=\"728\" y=\"316\" font-size=\"12\" font-weight=\"bold\" fill=\"#c62828\">LOST</text>\n\n  <!-- Legend -->\n  <rect x=\"40\" y=\"392\" width=\"22\" height=\"14\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1.5\"/>\n  <text x=\"70\" y=\"404\" font-size=\"12\">kept intact</text>\n  <rect x=\"200\" y=\"392\" width=\"22\" height=\"14\" fill=\"#fdf0e2\" stroke=\"#d9822b\" stroke-width=\"2.5\"/>\n  <text x=\"230\" y=\"404\" font-size=\"12\">misrepresented</text>\n  <rect x=\"380\" y=\"392\" width=\"22\" height=\"14\" fill=\"none\" stroke=\"#c62828\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n  <text x=\"410\" y=\"404\" font-size=\"12\">lost (link, caveat, feeling)</text>\n  <rect x=\"610\" y=\"392\" width=\"22\" height=\"14\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n  <text x=\"640\" y=\"404\" font-size=\"12\">uncertain (guess)</text>\n\n  <!-- Caption -->\n  <text x=\"410\" y=\"440\" text-anchor=\"middle\" font-size=\"12\" font-style=\"italic\">\"It is frightening to realize how early and drastically one does simplify,</text>\n  <text x=\"410\" y=\"457\" text-anchor=\"middle\" font-size=\"12\" font-style=\"italic\">how prematurely one does conclude.\" (Licklider and Taylor, 1968)</text>\n</svg>\n```\n\nThe things that drop out are the ones the essay says shape each person's data: \"insight, subjective feelings, and educated guesses.\" The fix the essay hopes for is the Engelbart setup. There, others can \"thumb through the speaker's files\" and check the underlying data, so the outline doesn't have to carry all of it."
+   }
+  ],
+  "created": "2026-10-29T16:59:12.826Z"
+ },
+ {
+  "id": "tmvtsyhao",
+  "kind": "pop",
+  "start": 7507,
+  "end": 7903,
+  "created": "2026-10-29T17:13:39.600Z"
+ },
+ {
+  "id": "tmvtt7nzn",
+  "kind": "pop",
+  "start": 9876,
+  "end": 10367,
+  "created": "2026-10-29T17:20:48.179Z"
+ },
+ {
+  "id": "tmvu5f2po",
+  "kind": "pop",
+  "start": 10620,
+  "end": 11146,
+  "created": "2026-10-29T23:02:29.244Z"
+ },
+ {
+  "id": "tmvu5jycb",
+  "kind": "pop",
+  "start": 11395,
+  "end": 11657,
+  "created": "2026-10-29T23:06:16.859Z"
+ },
+ {
+  "id": "tmvu5q57v",
+  "kind": "pop",
+  "start": 15120,
+  "end": 15839,
+  "created": "2026-10-29T23:11:05.707Z"
  }
 ]
